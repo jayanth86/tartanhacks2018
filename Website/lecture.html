@@ -19,6 +19,19 @@
     <link href="css/colors/blue.css" id="theme" rel="stylesheet">
     <link href="scss/sidebar.scss" id="theme" rel="stylesheet">
     <link href="https://code.jboxcdn.com/0.4.9/jBox.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+    <script>
+  // Initialize Firebase
+  var config = {
+      apiKey: "AIzaSyCnxiZJnOi4ZoRdZxorHOgZSmk-TkFGQVw",
+      authDomain: "intellect-fddd0.firebaseapp.com",
+      databaseURL: "https://intellect-fddd0.firebaseio.com",
+      projectId: "intellect-fddd0",
+      storageBucket: "https://intellect-fddd0.firebaseio.com",
+      messagingSenderId: "111240858067"
+    };
+  firebase.initializeApp(config);}
+  </script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -208,6 +221,7 @@
     <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.min.js"></script>
+    <script src ="./script.js"></script>
     <script type="text/javascript">
 var count = 0;
 for (var i = 1; i < 4; i ++)
