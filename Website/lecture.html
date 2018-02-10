@@ -15,6 +15,7 @@
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/kabir.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="css/colors/blue.css" id="theme" rel="stylesheet">
     <link href="scss/sidebar.scss" id="theme" rel="stylesheet">
@@ -339,9 +340,30 @@ function clickSeeQ(p){
     bsq.style = "display: flex; justify-content: center;"
     bsq.class = "btn hidden-sm-down btn-info;"
     //Make the questions appear
-    var see_q_textbox = document.getElementById("questions"+cou);
-    see_q_textbox.style="width:100%"
-    //see_q_textbox.value="Here are the questions that have been asked so far:"
+
+    var see_q = document.getElementById("questions2"+cou);
+    see_q.style="width: 100%"
+
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            /* Toggle between adding and removing the "active" class,
+            to highlight the button that controls the panel */
+            this.classList.toggle("active");
+
+            /* Toggle between hiding and showing the active panel */
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+}
+
+    // see_q.value="Here are the questions that have been asked so far:"
     //ACCESS THE SERVER TO FIND WHAT QUESTIONS HAVE BEEN ASKED.
 
 };
@@ -394,8 +416,9 @@ function clickBackAfterSeeQ(p){
     var bsq = document.getElementById("BackSeeQ"+cou);
     bsq.style = "display: none"
     //Make the questions appear
-    var see_q_textbox = document.getElementById("questions"+cou);
-    see_q_textbox.style="display: none"
+    var see_q = document.getElementById("questions2"+cou);
+    see_q.style= "display: none"
+
     //see_q_textbox.value=""; in case you want to reset the textbox value.
 };
 
@@ -427,10 +450,33 @@ for (var i = 1; i < 4; i ++)
                                 <img id ="img`+count+`" style="width:100%;" src = "assets/images/Inbios Presentation/` +ans+ `.jpg"></img>
                                     <div style = "padding-top: 1%;"></div>
                                 <textarea id ="questions`+count+`" style="display: none;"> </textarea>
+
+
+                             <div id="questions2`+count+`" style ="display:none">
+
+                                        <button class="accordion">What is the answer to life?</button>
+                                        <div class="panel">
+                                          <p>42.</p>
+                                        </div>
+
+                             </div>
+
+
                                 <a id="`+count+`" onclick = "clickAskQ(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">Ask a Question Here</a>
                                     <div style="padding-top: 1%;"> </div>
-                                <a id="SeeQ`+count+`" onclick = "clickSeeQ(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">See Questions</a>
+
+
+
+
+                          <a id="SeeQ`+count+`" onclick = "clickSeeQ(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">See Questions</a>
                                     <div style="padding-top: 1%;"> </div>
+
+
+
+
+
+
+
                                 <a id="BackSeeQ`+count+`" onclick = "clickBackAfterSeeQ(this.id)" style = "display: none" class="btn hidden-sm-down btn-info">Back</a>
                                 <div id="divCheckbox`+count+`" style="display: none;">
                                     <form>
