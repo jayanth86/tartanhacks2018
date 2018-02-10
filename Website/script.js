@@ -403,17 +403,17 @@
   database.ref('/classes/1234/slide/').on('value', function(snapshot){
     onSlideChange(snapshot)});
 
-  //if(document.getElementById("test")){
+  if(document.getElementById("test")){
     //append2("1234", "lmfao");
     Initialize(function (speechSdk) {
         SDK = speechSdk;
     });
     Setup();
     RecognizerStart(SDK, recognizer);
-  //}else{
+  }
     database.ref('classes/'+'1234/text').on('value', function(snapshot){
       onTextUpdate(snapshot);
-    });
+  });
   //}
 
   //console.log(translateTheShit("hello", "fr"));
