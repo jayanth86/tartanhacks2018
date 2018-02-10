@@ -3,7 +3,7 @@
   currentSlide = 1;
   textNo = 0;
   var token = '';
-  var translate = "en";
+  var translate = "fr";
 
   function Initialize(onComplete){
     if(!!window.SDK){

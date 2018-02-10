@@ -22,7 +22,6 @@
     <link href="https://code.jboxcdn.com/0.4.9/jBox.css" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
     <script src="./node_modules/microsoft-speech-browser-sdk/distrib/speech.sdk.bundle.js"></script>
-
     <!-- <script>
   // Initialize Firebase
   var config = {
@@ -234,7 +233,7 @@ var asked_question = "";
 
 
 
-function getreq(dat) {
+function getreq(dat,la) {
    var keyp = []
    var objret = $.ajax({
     url: 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases',
@@ -244,7 +243,7 @@ function getreq(dat) {
      data:  `{
         "documents": [
             {
-                "language": "en",
+                "language": "` + la + `",
                 "id": "1",
                 "text": "` + dat + `"
             }
@@ -315,7 +314,7 @@ function clickSubmitAfterAskQ(p){
     var findAnsDiv = document.getElementById("didFind"+cou);
     findAnsDiv.style=""
 
-    impterms = getreq(asked_question);
+    impterms = getreq(asked_question,translate);
     console.log(impterms);
     hilite(impterms);
 
@@ -345,13 +344,12 @@ function clickSeeQ(p){
     see_q.style="width: 100%"
 
     var acc = document.getElementsByClassName("accordion");
-    var i;
 
-    for (i = 0; i < acc.length; i++) {
+    for (var i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function() {
             /* Toggle between adding and removing the "active" class,
             to highlight the button that controls the panel */
-            this.classList.toggle("active");
+            // this.classList.toggle("active");
 
             /* Toggle between hiding and showing the active panel */
             var panel = this.nextElementSibling;
@@ -360,6 +358,7 @@ function clickSeeQ(p){
             } else {
                 panel.style.display = "block";
             }
+
         });
 }
 
