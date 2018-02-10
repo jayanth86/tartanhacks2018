@@ -323,6 +323,8 @@
         }`,
         type: 'POST',
         success: function(data){
+            console.log(data);
+            console.log(translate);
             console.log(data.documents[0].keyPhrases);
             keyp = data.documents[0].keyPhrases;
         },
@@ -383,13 +385,11 @@ function clickSubmitAfterAskQ(p){
     //this has Submitcount as its id, do some string parsing
     var cou = p.substring(6);
     var tarea = document.getElementById("textarea"+cou);
-    var data = tarea.value;
+    data = tarea.value;
     console.log(data);
     asked_question = tarea.value;
     var q_text = document.getElementById("divCheckbox"+cou);
     q_text.style="display: none;"
-
-    askQuestion(cou, data);
     tarea.value = "";
     // instead of making ask_q_here reappear
     // var ask_q_here = document.getElementById(cou);
@@ -401,10 +401,9 @@ function clickSubmitAfterAskQ(p){
     var findAnsDiv = document.getElementById("didFind"+cou);
     findAnsDiv.style=""
 
-    impterms = getreq(asked_question);
+    impterms = getreq(asked_question, translate);
     console.log(impterms);
     hilite(impterms);
-
 };
 
 

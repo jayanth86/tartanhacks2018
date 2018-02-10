@@ -173,7 +173,7 @@
       console.log("appending " + text);
   }
 
-  database.ref('/classes/1234/list/').on('value', function(snapshot){
+  /*database.ref('/classes/1234/list/').on('value', function(snapshot){
     onQuestionUpdate(snapshot, textNo);
   });
   
@@ -191,24 +191,27 @@
       for(var i = 0;i < arr.length;i++){
         el.innerHTML = el.innerHTML + " " + arr[i] + "\n";
       }
-  }
+  }*/
 
-  function getQuestions(idNo){
+  function getQuestions(idNo, elem){
     database.rel('/classes/1234/questions/'+idNo).once('value').then(
       function(snappy){
-        return snappy.val().split(';');
+        arr = snappy.val().split(';');
+        for(var i = 0;i < arr.length;i++){
+          elem.innerHTML = elem.innerHTML + " " + arr[i] + "\n";
+        }
       });
   }
 
-  //database.ref('/classes/1234/list/').set("n")
+  database.ref('/classes/1234/list/').set("");
   function askQuestion(slide, question){
     database.ref('/classes/1234/list/').transaction(function(post){
         slide = currentSlide;
         if(post){
-            if(post == "n"){
+            if(post.length == 0){
               post = question;
             }else{
-              console.log("lmao")
+              console.log("lmao");
               post = post + ';' + question;
             }
         }
@@ -244,9 +247,11 @@
     }
     stuff = database.ref('/classes/1234/list').once('value').then(function(snappy){
       database.ref('/classes/1234/questions/'+textNo).set(snappy.val());
+     // database.ref('/classes/1234/text').set("");
       if(currentSlide != parseInt(snapshot.val())){
         textNo = textNo + 1;
         database.ref('/classes/1234/text').set("");
+        database.ref('/classes/1234/list').set("");
         currentSlide = parseInt(snapshot.val());
       }
     });
