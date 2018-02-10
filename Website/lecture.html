@@ -327,9 +327,6 @@
         }`,
         type: 'POST',
         success: function(data){
-            console.log(data);
-            console.log(translate);
-            console.log(data.documents[0].keyPhrases);
             keyp = data.documents[0].keyPhrases;
         },
             async: false,
@@ -352,7 +349,6 @@
 function readChoice()
 {
     var lang = $('#lang').find(":selected").attr('name');
-    console.log(lang);
     changeLang(lang);
 }
 
@@ -362,7 +358,6 @@ function readChoice()
 
 // When you click on "Ask a question"
 function clickAskQ(p){
-    console.log(p);
     var q_text = document.getElementById("divCheckbox"+p);
     q_text.style="";
     var ask_q_here = document.getElementById(p);
@@ -378,19 +373,15 @@ function clickBackAfterAskQ(p){
     q_text.style="display: none;"
     var ask_q_here = document.getElementById(cou);
     ask_q_here.style="display: flex; justify-content: center;"
-    console.log(cou);
-
 };
 
 // Click on submit (after asking a question)
 // when you wanna send the question to the server
 function clickSubmitAfterAskQ(p){
-    console.log(p)
     //this has Submitcount as its id, do some string parsing
     var cou = p.substring(6);
     var tarea = document.getElementById("textarea"+cou);
     data = tarea.value;
-    console.log(data);
     asked_question = tarea.value;
     var q_text = document.getElementById("divCheckbox"+cou);
     q_text.style="display: none;"
@@ -406,7 +397,6 @@ function clickSubmitAfterAskQ(p){
     findAnsDiv.style=""
 
     impterms = getreq(asked_question, translate);
-    console.log(impterms);
     hilite(impterms);
 };
 
@@ -565,14 +555,12 @@ for (var i = 1; i < 4; i ++)
         `;
         questions_for_i = questions_for_i + help;
     }
-    console.log(questions_for_i);
     seenQuesForCountId.push(questions_for_i);
 }
 
 var slideNumber = 1;
 var count = 1;
 var name = localStorage.getItem('usernameint');
-console.log(name);
 
 $('#namememe').append(name);
 count++; //count == 1
