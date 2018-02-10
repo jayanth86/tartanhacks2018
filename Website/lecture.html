@@ -223,7 +223,7 @@
     <script type="text/javascript">
 
 // When you click on "Ask a question"
-function john(p){
+function clickAskQ(p){
     console.log(p);
     var q_text = document.getElementById("divCheckbox"+p);
     q_text.style="";
@@ -234,7 +234,7 @@ function john(p){
 
 //click the back button after "Ask a Q",
 //make question disappear, make "ask a q" reappear
-function henry(p){
+function clickBackAfterAskQ(p){
     var cou = p.substring(4); //cou for count
     var q_text = document.getElementById("divCheckbox"+cou);
     q_text.style="display: none;"
@@ -246,7 +246,7 @@ function henry(p){
 
 // Click on submit (after asking a question)
 // when you wanna send the question to the server
-function george(p){
+function clickSubmitAfterAskQ(p){
     console.log(p)
     //this has Submitcount as its id, do some string parsing
     var cou = p.substring(6);
@@ -289,7 +289,7 @@ return keyp;
 }
 
 // Clicking on See Questions
-function sarah(p){
+function clickSeeQ(p){
     var cou = p.substring(4);
     // Make the slide disappear
     var image = document.getElementById("img"+cou);
@@ -314,7 +314,7 @@ function sarah(p){
 };
 
 // Clicking on back after See Questions
-function emily(p){
+function clickBackAfterSeeQ(p){
     var cou = p.substring(8);
     //make slide reappear
     var image = document.getElementById("img"+cou);
@@ -363,17 +363,17 @@ for (var i = 1; i < 4; i ++)
                                 <img id ="img`+count+`" style="width:100%;" src = "assets/images/Inbios Presentation/` +ans+ `.jpg"></img>
                                     <div style = "padding-top: 1%;"></div>
                                 <textarea id ="questions`+count+`" style="display: none;"> </textarea>
-                                <a id="`+count+`" onclick = "john(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">Ask a Question Here</a>
+                                <a id="`+count+`" onclick = "clickAskQ(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">Ask a Question Here</a>
                                     <div style="padding-top: 1%;"> </div>
-                                <a id="SeeQ`+count+`" onclick = "sarah(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">See Questions</a>
+                                <a id="SeeQ`+count+`" onclick = "clickSeeQ(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">See Questions</a>
                                     <div style="padding-top: 1%;"> </div>
-                                <a id="BackSeeQ`+count+`" onclick = "emily(this.id)" style = "display: none" class="btn hidden-sm-down btn-info">Back</a>
+                                <a id="BackSeeQ`+count+`" onclick = "clickBackAfterSeeQ(this.id)" style = "display: none" class="btn hidden-sm-down btn-info">Back</a>
                                 <div id="divCheckbox`+count+`" style="display: none;">
                                     <form>
                                       Question:<br>
                                       <textarea id="textarea`+count+`" style="width: 100%; height: 100px" id="msg" name="user_message"></textarea>
-                                      <a id="Submit`+count+`" onclick = "george(this.id)" class="btn hidden-sm-down btn-info" style='width:50%;'>Submit</a>
-                                      <a id="Back`+count+`" onclick = "henry(this.id)" class="btn hidden-sm-down btn-info" style='width:49%;'>Back</a>
+                                      <a id="Submit`+count+`" onclick = "clickSubmitAfterAskQ(this.id)" class="btn hidden-sm-down btn-info" style='width:50%;'>Submit</a>
+                                      <a id="Back`+count+`" onclick = "clickBackAfterAskQ(this.id)" class="btn hidden-sm-down btn-info" style='width:49%;'>Back</a>
                                     </form>
                                 </div>
                             </div>
