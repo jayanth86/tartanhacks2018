@@ -144,8 +144,7 @@
         RecognizerStop(SDK, recognizer);
     }
     recognizer = RecognizerSetup(SDK, 'recognitionMode.value', 'en-US', SDK.SpeechResultFormat['Simple'], 
-
-      '4bcb01f1ad104b659986942a5cfe4e3c');
+      subscriptionKey);
   }
 
 
