@@ -194,12 +194,13 @@
   }*/
 
   function getQuestions(idNo, elem){
-    database.rel('/classes/1234/questions/'+idNo).once('value').then(
+    database.ref('/classes/1234/questions/'+idNo).once('value').then(
       function(snappy){
         arr = snappy.val().split(';');
         for(var i = 0;i < arr.length;i++){
-          elem.innerHTML = elem.innerHTML + " " + arr[i] + "\n";
+          elem.push(arr[i]);
         }
+        
       });
   }
 
