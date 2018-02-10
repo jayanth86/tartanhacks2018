@@ -294,7 +294,7 @@
       },
       error: function(){
         getToken();
-        alert("not working");
+        //alert("not working");
         return translateTheShit(text, lang);
       },
       async: false
@@ -305,7 +305,7 @@
     onSlideChange(snapshot)});
 
   if(document.getElementById("test")){
-    append2("1234", "lmfao");
+    //append2("1234", "lmfao");
     Initialize(function (speechSdk) {
         SDK = speechSdk;
     });
