@@ -255,13 +255,13 @@ function clickSubmitAfterAskQ(p){
     var tarea = document.getElementById("textarea"+cou);
     var data = tarea.value;
     console.log(data);
-    tarea.value="";
     var q_text = document.getElementById("divCheckbox"+cou);
     q_text.style="display: none;"
     var ask_q_here = document.getElementById(cou);
     ask_q_here.style="display: flex; justify-content: center;"
 
     askQuestion(cou, data);
+    tarea.value = "";
 
 };
 function getreq(dat) {
@@ -318,7 +318,7 @@ function clickSeeQ(p){
     //Make the questions appear
     var see_q_textbox = document.getElementById("questions"+cou);
     see_q_textbox.style="width:100%"
-    see_q_textbox.value="Here are the questions that have been asked so far:"
+    //see_q_textbox.value="Here are the questions that have been asked so far:"
     //ACCESS THE SERVER TO FIND WHAT QUESTIONS HAVE BEEN ASKED.
 
 };

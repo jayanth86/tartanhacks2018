@@ -1,6 +1,6 @@
 
   recognizer = null;
-  currentSlide = 0;
+  currentSlide = 1;
   textNo = 0;
 
   function Initialize(onComplete){
@@ -169,20 +169,36 @@
       console.log("appending " + text);
   }
 
-  database.ref('/classes/1234/list').on('value', function(snapshot){
-    onQuestionUpdate(snapshot);
+  database.ref('/classes/1234/list/').on('value', function(snapshot){
+    onQuestionUpdate(snapshot, textNo);
   });
   
-  function onQuestionUpdate(snapshot){
-      console.log(snapshot);
+  function onQuestionUpdate(snapshot, tNo){
+      if(tNo == 0){
+        tNo = 1;
+      }
+      var el = document.getElementById("questions"+(tNo));
+      if(!el){
+        console.log("not there");
+        return;
+      }
+      var arr = snapshot.val().split(";");
+      el.innerHTML = "";
+      for(var i = 0;i < arr.length;i++){
+        el.innerHTML = el.innerHTML + " " + arr[i] + "\n";
+      }
   }
-  database.ref('/classes/1234/list/').set("n")
+  //database.ref('/classes/1234/list/').set("n")
   function askQuestion(slide, question){
     database.ref('/classes/1234/list/').transaction(function(post){
         slide = currentSlide;
         if(post){
-            console.log("lmao")
-            post = post + ';['+slide+'~'+question + ']';
+            if(post == "n"){
+              post = question;
+            }else{
+              console.log("lmao")
+              post = post + ';'+question;
+            }
         }
         console.log("Question asked");
         console.log(post);
@@ -198,8 +214,18 @@
   }
 
   function onSlideChange(snapshot){
-    currentSlide = parseInt(snapshot.val());
-    textNo = textNo + 1;
+    //currentSlide = parseInt(snapshot.val());
+    if(textNo == 0){
+      textNo = 1;
+      return;
+    }
+    stuff = database.ref('/classes/1234/list').once('value').then(function(snappy){
+      database.ref('/classes/1234/questions/'+textNo).set(snappy.val());
+      if(currentSlide != parseInt(snapshot.val())){
+        textNo = textNo + 1;
+        currentSlide = parseInt(snapshot.val());
+      }
+    });
   }
 
   database.ref('/classes/1234/slide/').on('value', function(snapshot){
