@@ -22,8 +22,13 @@
     <link href="https://code.jboxcdn.com/0.4.9/jBox.css" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
     <script src="./node_modules/microsoft-speech-browser-sdk/distrib/speech.sdk.bundle.js"></script>
+<<<<<<< Updated upstream
 
 
+=======
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+>>>>>>> Stashed changes
 
     <!-- <script>
   // Initialize Firebase
@@ -150,15 +155,85 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
 
-                    <div class="col-md-6 col-8 align-self-center">
+                    <div class="col-md-6 col-8 align-self-center" style="width: 100%;">
                         <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                             <li class="breadcrumb-item"><a href="index.html">Classes</a></li>
                             <li class="breadcrumb-item"><a href="c.html">Biotechnology 12-900</a></li>
-                            <li class="breadcrumb-item active">Lecture 11</li>
+                            <li class="breadcrumb-item"><a href="c.html">Lecture 11</a></li>
                         </ol>
+                      </div>
+
+                      <div class="col-md-6 col-8 align-self-center" style="width: 100%;">
+                        <h3 class="text-themecolor m-b-0 m-t-0">Translate</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"> 
+                                <select id ="lang" style="width: 100%;"">
+                              <option name='af'>Afrikaans</option>
+                              <option name='ar'>Arabic</option>
+                               <option name='bn'>Bangla</option>
+                              <option name='bs'>Bosnian</option>
+                               <option name='bg'>Bulgarian</option>
+                              <option name='yue'>Cantonese</option>
+                               <option name='ca'>Catalan</option>
+                              <option name='zh-Hans'>Chinese (Simplified)</option>
+                               <option name='zh-Hant'>Chinese (Tranditional)</option>
+                              <option name='hr'>Croatian</option>
+
+                              <option name='cs'>Czech</option>
+                              <option name='da'>Danish</option>
+                               <option name='nl'>Dutch</option>
+                              <option name='en'>English</option>
+                               <option name='et'>Estonian</option>
+                              <option name='fj'>Fijian</option>
+                               <option name='fil'>Filipino</option>
+                              <option name='fi'>Finnish</option>
+                               <option name='fr'>French</option>
+                              <option name='de'>German</option>
+
+                              <option name='el'>Greek</option>
+                              <option name='ht'>Hatian-Creole</option>
+                               <option name='he'>Hebrew</option>
+                              <option name='hi'>Hindi</option>
+                               <option name='hu'>Hungarian</option>
+                              <option name='id'>Indonesian</option>
+                               <option name='it'>Italian</option>
+                              <option name='je'>Japanese</option>
+                               <option name='ko'>Korean</option>
+                              <option name='lv'>Latvian</option>
+
+                              <option name='lt'>Lithuanian</option>
+                              <option name='ms'>Malay</option>
+                               <option name='mt'>Maltese</option>
+                              <option name='mb'>Norwegian</option>
+                               <option name='fa'>Persian</option>
+                              <option name='pl'>Polish</option>
+                               <option name='pt'>Portugese</option>
+                              <option name='ro'>Romanian</option>
+                               <option name='ru'>Russian</option>
+                              <option name='sm'>Samoan</option>
+
+                               <option name='sk'>Slovak</option>
+                              <option name='es'>Spanish</option>
+                               <option name='sv'>Swedish</option>
+                              <option name='ta'>Tamil</option>
+                               <option name='th'>Thai</option>
+                              <option name='tr'>Turkish</option>
+                               <option name='uk'>Ukrainian</option>
+                              <option name='u'>Urdu</option>
+                               <option name='vi'>Vietnamese</option>
+                              <option name='cy'>Welsh</option>
+
+                            </select></li>
+                            <li class="breadcrumb-item"><a href="javascript:readChoice()" = "ReadChoice()">Live Translate</a></li>
+                        </ol>
+                       
                     </div>
+
+                
+
+                    
 
                 </div>
                 <!-- ============================================================== -->
@@ -229,6 +304,7 @@
     <script src="js/jquery.mark.min.js"></script>
     <script type="text/javascript">
 
+<<<<<<< Updated upstream
         var impterms = [];
         var asked_question = "";
         
@@ -270,6 +346,14 @@
     </script>
     <script src ="./script.js"></script>
         <script type="text/javascript">
+//Putting global variables:
+
+function readChoice()
+{
+    var lang = $('#lang').find(":selected").attr('name');
+    console.log(lang)
+}
+
 
 //Putting global variables:
 
@@ -321,7 +405,7 @@ function clickSubmitAfterAskQ(p){
     var findAnsDiv = document.getElementById("didFind"+cou);
     findAnsDiv.style=""
 
-    impterms = getreq(asked_question,translate);
+    impterms = getreq(asked_question);
     console.log(impterms);
     hilite(impterms);
 
