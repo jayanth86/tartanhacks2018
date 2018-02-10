@@ -27,7 +27,7 @@
         language, // Supported languages are specific to each recognition mode. Refer to docs.
         format); // SDK.SpeechResultFormat.Simple (Options - Simple/Detailed)
     var useTokenAuth = false;
-    
+
     var authentication = function() {
         if (!useTokenAuth)
             return new SDK.CognitiveSubscriptionKeyAuthentication(subscriptionKey);
@@ -150,7 +150,7 @@
     if (recognizer != null) {
         RecognizerStop(SDK, recognizer);
     }
-    recognizer = RecognizerSetup(SDK, 'recognitionMode.value', 'en-US', SDK.SpeechResultFormat['Simple'], 
+    recognizer = RecognizerSetup(SDK, 'recognitionMode.value', 'en-US', SDK.SpeechResultFormat['Simple'],
       subscriptionKey);
   }
 
@@ -176,7 +176,7 @@
   /*database.ref('/classes/1234/list/').on('value', function(snapshot){
     onQuestionUpdate(snapshot, textNo);
   });
-  
+
   function onQuestionUpdate(snapshot, tNo){
       if(tNo == 0){
         tNo = 1;
@@ -193,16 +193,39 @@
       }
   }*/
 
-  function getQuestions(idNo, elem){
-    database.ref('/classes/1234/questions/'+idNo).once('value').then(
-      function(snappy){
-        arr = snappy.val().split(';');
-        for(var i = 0;i < arr.length;i++){
-          elem.push(arr[i]);
-        }
-        
-      });
-  }
+  // function getQuestions(idNo, elem){
+  //   database.ref('/classes/1234/questions/'+idNo).once('value').then(
+  //     function(snappy){
+  //       arr = snappy.val().split(';');
+  //       // for(var i = 0;i < arr.length;i++){
+  //       //   elem.push(arr[i]);
+  //       // }
+
+  //       console.log("inside getQuestions");
+  //       //arr has all the questions.
+  //       var questions_for_id = ""
+  //       for (var j = 0; j < arr.length; j++)
+  //       {
+  //         var k = j+1;
+  //         var curr_q = q_array[j];
+  //         var curr_ans = "This is answer " + k;
+  //         var help =f
+  //         `
+  //             <div id="q`+j+`uestions2`+snappy.key+`" style ="display:none">
+  //                 <button class="accordion">` + curr_q + `</button>
+  //                     <div class="panel">
+  //                         <p>`+curr_ans+`.</p>
+  //                     </div>
+  //             </div>
+  //         `;
+  //         questions_for_id = questions_for_id + help;
+  //       }
+
+  //       //now want to add questions_for_id to the HTML code
+  //       var div = document.getElementById("special3");
+  //       div.innerHTML = help;
+  //     });
+  // }
 
   //database.ref('/classes/1234/list/').set("");
   function askQuestion(slide, question){
@@ -251,7 +274,7 @@
   {
     database.ref('/classes/1234/currentQ/').set(s);
   }
-  
+
   function onSlideChange(snapshot){
     //currentSlide = parseInt(snapshot.val());
     currentSlide = parseInt(snapshot.val());
@@ -345,7 +368,7 @@
                     </div>
                     <!-- Column -->
                     <!-- Column -->
-                </div> 
+                </div>
     `
     $('#boxthing2').append(html);
   }
@@ -384,11 +407,9 @@
                                 <img id ="img`+imgnum+`" style="width:100%;" src = "assets/images/Inbios Presentation/` +ans+ `.jpg"></img>
                                     <div style = "padding-top: 1%;"></div>
                                 <textarea id ="questions`+cardnum+`" style="display: none;"> </textarea>
-                                <div id="special`+cardnum+`">
+                                <div id="special`+count+`">
                                 `
-
-    + seenQuesForCountId[0] +
-
++
                                 `
                                 </div>
                           <a id="`+cardnum+`" onclick = "clickAskQ(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">Ask a Question Here</a>
@@ -397,9 +418,9 @@
 
 
 
-                          <a id="SeeQ`+cardnum+`" onclick = "clickSeeQ(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">See Questions</a>
+<!--                          <a id="SeeQ`+cardnum+`" onclick = "clickSeeQ(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">See Questions</a>
                                     <div style="padding-top: 1%;"> </div>
-
+-->
 
 
 

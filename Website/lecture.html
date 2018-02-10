@@ -391,7 +391,6 @@ function clickSubmitAfterAskQ(p){
     // ask_q_here.style="display: flex; justify-content: center;"
     // console.log(asked_question)
 
-
     // make a new div appear: Did you find your answer?
     var findAnsDiv = document.getElementById("didFind"+cou);
     findAnsDiv.style=""
@@ -403,54 +402,58 @@ function clickSubmitAfterAskQ(p){
 
 // Clicking on See Questions
 function clickSeeQ(p){
-    var cou = p.substring(4);
-    // Make the slide disappear
-    var image = document.getElementById("img"+cou);
-    image.style="display:none;"
+//     var cou = p.substring(4);
+//     // Make the slide disappear
+//     var image = document.getElementById("img7");
+//     image.style="display:none;"
 
-    //make Ask a Question Here disappear
-    var askquestionhere = document.getElementById(cou);
-    askquestionhere.style="display:none;"
-    //make See Questions Disappear
-    var sq = document.getElementById("SeeQ"+cou);
-    sq.style="display:none;"
-    //Make Back reappear
-    var bsq = document.getElementById("BackSeeQ"+cou);
-    bsq.style = "display: flex; justify-content: center;"
-    bsq.class = "btn hidden-sm-down btn-info;"
-    //Make the questions appear
-    //Update the questions
+//     //make Ask a Question Here disappear
+//     var askquestionhere = document.getElementById(cou);
+//     askquestionhere.style="display:none;"
+//     //make See Questions Disappear
+//     var sq = document.getElementById("SeeQ"+cou);
+//     sq.style="display:none;"
+//     //Make Back reappear
+//     var bsq = document.getElementById("BackSeeQ"+cou);
+//     bsq.style = "display: flex; justify-content: center;"
+//     bsq.class = "btn hidden-sm-down btn-info;"
+//     //Make the questions appear
+//     //Update the questions
 
-    // var see_q = document.getElementById("questions2"+cou);
-    // see_q.style="width: 100%"
-    for (var j = 0; j < 10; j++)
-    {
-      var see_qj = document.getElementById("q"+j+"uestions2"+cou);
-      if (see_qj != null)
-      {
-        see_qj.style="width: 100%;"
-      }
-    }
+//     // getQuestions call:
+//     getQuestions(cou, q_array);
 
 
-    var acc = document.getElementsByClassName("accordion");
+//     // var see_q = document.getElementById("questions2"+cou);
+//     // see_q.style="width: 100%"
+//     for (var j = 0; j < 10; j++)
+//     {
+//       var see_qj = document.getElementById("q"+j+"uestions2"+cou);
+//       if (see_qj != null)
+//       {
+//         see_qj.style="width: 100%;"
+//       }
+//     }
 
-    for (var i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            /* Toggle between adding and removing the "active" class,
-            to highlight the button that controls the panel */
-            // this.classList.toggle("active");
 
-            /* Toggle between hiding and showing the active panel */
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
+//     var acc = document.getElementsByClassName("accordion");
 
-        });
-}
+//     for (var i = 0; i < acc.length; i++) {
+//         acc[i].addEventListener("click", function() {
+//             /* Toggle between adding and removing the "active" class,
+//             to highlight the button that controls the panel */
+//             // this.classList.toggle("active");
+
+//             /* Toggle between hiding and showing the active panel */
+//             var panel = this.nextElementSibling;
+//             if (panel.style.display === "block") {
+//                 panel.style.display = "none";
+//             } else {
+//                 panel.style.display = "block";
+//             }
+
+//         });
+// }
 
     // see_q.value="Here are the questions that have been asked so far:"
     //ACCESS THE SERVER TO FIND WHAT QUESTIONS HAVE BEEN ASKED.
@@ -494,7 +497,7 @@ function clickNotFoundAns(p){
 function clickBackAfterSeeQ(p){
     var cou = p.substring(8);
     //make slide reappear
-    var image = document.getElementById("img"+cou);
+    var image = document.getElementById("img7");
     image.style="width:100%;"
 
     //make Ask a Question Here disappear
