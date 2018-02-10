@@ -223,7 +223,7 @@
     hypothesisDiv = document.getElementById("text"+textNo);
     console.log("TRANSLATE IS " + translate);
     if(hypothesisDiv){
-      if(translate != ""){
+      if(translate != "en"){
         translateTheShit(snapshot.val(), translate, hypothesisDiv);
         console.log("1");
       }else{
