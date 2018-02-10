@@ -246,7 +246,11 @@
   }
 
 
-
+  function setVal(s)
+  {
+    database.ref('/classes/1234/currentQ/').set(s);
+  }
+  
   function onSlideChange(snapshot){
     //currentSlide = parseInt(snapshot.val());
     currentSlide = parseInt(snapshot.val());
