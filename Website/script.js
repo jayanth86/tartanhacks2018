@@ -198,7 +198,6 @@
       function(snappy){
         return snappy.val().split(';');
       });
-
   }
 
   //database.ref('/classes/1234/list/').set("n")
@@ -210,7 +209,7 @@
               post = question;
             }else{
               console.log("lmao")
-              post = post + ';'+question;
+              post = post + ';' + question;
             }
         }
         console.log("Question asked");
@@ -224,7 +223,7 @@
     console.log("TRANSLATE IS " + translate);
     if(hypothesisDiv){
       if(translate != "en"){
-        translateTheShit(snapshot.val(), translate, hypothesisDiv);
+        translateTheShit(snapshot.val(), "en", translate, hypothesisDiv);
         console.log("1");
       }else{
         hypothesisDiv.innerHTML = snapshot.val();
@@ -254,7 +253,16 @@
   }
 
   function changeLang(text){
+    last = translate;
     translate = text;
+    translateEverything(last, translate);
+  }
+
+  function translateEverything(from, to){
+    for(var i = 1; i <= textNo; i++){
+      stuff = document.getElementById("text"+i);
+      translateTheShit(stuff.innerHTML, from, to, stuff);
+    }
   }
 
   function getToken(){
@@ -276,11 +284,11 @@
     return true;
   }
 
-  function translateTheShit(text, lang, gay){
+  function translateTheShit(text, from, to, gay){
     //getToken();
     console.log("TRANSLATING " + text);
     url2 = 'https://api.microsofttranslator.com/V2/Http.svc/Translate?text=' + text
-    + '&from=en&to=' + lang + '&Ocp-Apim-Subscription-Key=' + translatorKey +
+    + '&from='+from+'&to=' + to + '&Ocp-Apim-Subscription-Key=' + translatorKey +
     '&appId=Bearer%20' + token;
     console.log(url2);
     $.ajax({
@@ -297,7 +305,7 @@
       error: function(){
         getToken();
         //alert("not working");
-        return translateTheShit(text, lang);
+        return translateTheShit(text, from, to, gay);
       },
       async: false
     });
