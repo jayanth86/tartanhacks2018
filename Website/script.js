@@ -240,6 +240,13 @@
     }
   }
 
+  function addQuestion(snapshot)
+  {
+    makeQCard(snapshot);
+  }
+
+
+
   function onSlideChange(snapshot){
     //currentSlide = parseInt(snapshot.val());
     currentSlide = parseInt(snapshot.val());
@@ -318,6 +325,27 @@
       async: false
     });
   }
+
+  function makeQCard(q)
+  {
+    var str = q.val();
+    console.log(q)
+    var html =  `<div class="row">
+                    <!-- Column -->
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-block">` + str + `
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                </div> 
+    `
+    $('#boxthing2').append(html);
+  }
+
+
 
   function makeCard(imgnum, cardnum)
 {
@@ -402,6 +430,8 @@
 
   database.ref('/classes/1234/slide/').on('value', function(snapshot){
     onSlideChange(snapshot)});
+
+  database.ref('/classes/1234/currentQ/').on('value' , (function(snapshot) {addQuestion(snapshot)}));
 
   if(document.getElementById("test")){
     //append2("1234", "lmfao");
