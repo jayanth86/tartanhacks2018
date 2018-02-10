@@ -223,49 +223,54 @@
     <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.min.js"></script>
+
+    <script src="text/javascript">
+
+        var impterms = [];
+        var asked_question = "";
+        
+        
+        
+        function getreq(dat,la) {
+           var keyp = []
+           var objret = $.ajax({
+            url: 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases',
+            headers: { 'Ocp-Apim-Subscription-Key': 'ebabcbde10a04aebbb655184a103dca9',
+             'Content-Type' :'application/json',
+             'Accept' : 'application/json' },
+             data:  `{
+                "documents": [
+                    {
+                        "language": "` + la + `",
+                        "id": "1",
+                        "text": "` + dat + `"
+                    }
+                ]
+        }`,
+        type: 'POST',
+        success: function(data){
+            console.log(data.documents[0].keyPhrases);
+            keyp = data.documents[0].keyPhrases;
+        },
+            async: false,
+        });
+        return keyp;
+        }
+    
+    
+        function hilite(dat)    {
+            $(".card").mark(dat);
+        }
+        function unlite(dat)    {
+            $(".card").unmark(dat)
+        }
+    </script>
     <script src ="./script.js"></script>
     <script src="js/jquery.mark.min.js"></script>
     <script type="text/javascript">
 
 //Putting global variables:
-var impterms = [];
-var asked_question = "";
 
-
-
-function getreq(dat,la) {
-   var keyp = []
-   var objret = $.ajax({
-    url: 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases',
-    headers: { 'Ocp-Apim-Subscription-Key': 'ebabcbde10a04aebbb655184a103dca9',
-     'Content-Type' :'application/json',
-     'Accept' : 'application/json' },
-     data:  `{
-        "documents": [
-            {
-                "language": "` + la + `",
-                "id": "1",
-                "text": "` + dat + `"
-            }
-        ]
-}`,
-    type: 'POST',
-    success: function(data){
-        console.log(data.documents[0].keyPhrases);
-        keyp = data.documents[0].keyPhrases;
-    },
-    async: false,
-});
-return keyp;
-}
-
-
-function hilite(dat)    {
-    $(".card").mark(dat);
-}
-function unlite(dat)    {
-    $(".card").unmark(dat)
-}
 
 // When you click on "Ask a question"
 function clickAskQ(p){
@@ -404,6 +409,7 @@ function clickNotFoundAns(p){
 
     askQuestion(cou, asked_question);
     unlite(impterms);
+    impterms = [];
     asked_question="";
 };
 
