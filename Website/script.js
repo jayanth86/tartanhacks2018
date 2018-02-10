@@ -2,6 +2,8 @@
   recognizer = null;
   currentSlide = 1;
   textNo = 0;
+  var token = '';
+  translate = "true";
 
   function Initialize(onComplete){
     if(!!window.SDK){
@@ -10,6 +12,7 @@
   }
 
   subscriptionKey = '4bcb01f1ad104b659986942a5cfe4e3c';
+  translatorKey = '31c12adc1b544812963e39687575170d'
   hypothesisDiv = document.getElementById("text1");
 
   function RecognizerSetup(SDK, recognitionMode, language, format, subKey){
@@ -208,9 +211,17 @@
 
   function onTextUpdate(snapshot){
     hypothesisDiv = document.getElementById("text"+textNo);
-    if(hypothesisDiv)
-      hypothesisDiv.innerHTML = snapshot.val();
+    console.log("TRANSLATE IS " + translate);
+    if(hypothesisDiv){
+      if(translate == ""){
+        translateTheShit(snapshot.val(), translate, hypothesisDiv);
+        console.log("1");
+      }else{
+        hypothesisDiv.innerHTML = snapshot.val();
+        console.log("2");
+      }
       console.log(snapshot.val())
+    }
   }
 
   function onSlideChange(snapshot){
@@ -223,8 +234,60 @@
       database.ref('/classes/1234/questions/'+textNo).set(snappy.val());
       if(currentSlide != parseInt(snapshot.val())){
         textNo = textNo + 1;
+        database.ref('/classes/1234/text').set("");
         currentSlide = parseInt(snapshot.val());
       }
+    });
+  }
+
+  function changeLang(text){
+    if(text != "en"){
+      translate = text;
+    }else{
+      text = "";
+    }
+  }
+
+  function getToken(){
+    url2 = 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscription-Key='
+    +translatorKey;
+    $.ajax({
+      url: url2,
+      data: '',
+      type: 'POST',
+      success: function(data){
+        console.log('Data ' +data);
+        token = data;
+      },
+      error: function(){
+        alert("error");
+      },
+      async: false
+    });
+    return true;
+  }
+
+  function translateTheShit(text, lang, gay){
+    //getToken();
+    console.log("TRANSLATING " + text);
+    url2 = 'https://api.microsofttranslator.com/V2/Http.svc/Translate?text=' + text
+    + '&from=en&to=' + lang + '&Ocp-Apim-Subscription-Key=' + translatorKey +
+    '&appId=Bearer%20' + token;
+    console.log(url2);
+    $.ajax({
+      url: url2,
+      data: "",
+      type: 'GET',
+      success: function(data){
+        console.log('TRANSLATED '+data.children[0].innerHTML);
+        gay.innerHTML = data.children[0].innerHTML;
+      },
+      error: function(){
+        getToken();
+        alert("not working");
+        return translateTheShit(text, lang);
+      },
+      async: false
     });
   }
 
@@ -243,3 +306,5 @@
       onTextUpdate(snapshot);
     });
   }
+
+  //console.log(translateTheShit("hello", "fr"));
