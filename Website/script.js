@@ -1,12 +1,51 @@
 
+  recognizer = null;
   function Initialize(onComplete){
     if(!!window.SDK){
         console.log("error");
     }
   }
 
+  subscriptionKey = '4bcb01f1ad104b659986942a5cfe4e3c';
+  hypothesisDiv = document.getElementById("text1");
+
   function RecognizerSetup(SDK, recognitionMode, language, format, subKey){
     recognitionMode = SDK.RecognitionMode.Dictation;
+    var recognizerConfig = new SDK.RecognizerConfig(
+        new SDK.SpeechConfig(
+            new SDK.Context(
+                new SDK.OS(navigator.userAgent, "Browser", null),
+                new SDK.Device("SpeechSample", "SpeechSample", "1.0.00000"))),
+        recognitionMode,
+        language, // Supported languages are specific to each recognition mode. Refer to docs.
+        format); // SDK.SpeechResultFormat.Simple (Options - Simple/Detailed)
+    var useTokenAuth = false;
+    
+    var authentication = function() {
+        if (!useTokenAuth)
+            return new SDK.CognitiveSubscriptionKeyAuthentication(subscriptionKey);
+        var callback = function() {
+            var tokenDeferral = new SDK.Deferred();
+            try {
+                var xhr = new(XMLHttpRequest || ActiveXObject)('MSXML2.XMLHTTP.3.0');
+                xhr.open('GET', '/token', 1);
+                xhr.onload = function () {
+                    if (xhr.status === 200)  {
+                        tokenDeferral.Resolve(xhr.responseText);
+                    } else {
+                        tokenDeferral.Reject('Issue token request failed.');
+                    }
+                };
+                xhr.send();
+            } catch (e) {
+                window.console && console.log(e);
+                tokenDeferral.Reject(e.message);
+            }
+            return tokenDeferral.Promise();
+        }
+        return new SDK.CognitiveTokenAuthentication(callback, callback);
+    }();
+    return SDK.CreateRecognizer(recognizerConfig, authentication);
   }
 
   function RecognizerStop(SDK, recognizer) {
@@ -76,32 +115,37 @@
   }
 
   function UpdateRecognizedHypothesis(text, append) {
-    if (append) 
+        hypothesisDiv = document.getElementById("text1");
         hypothesisDiv.innerHTML += text + " ";
-    else 
-        hypothesisDiv.innerHTML = text;
-    var length = hypothesisDiv.innerHTML.length;
-    if (length > 403) {
+        append2("1234", hypothesisDiv.innerHTML)
+    //var length = hypothesisDiv.innerHTML.length;
+    /*if (length > 403) {
         hypothesisDiv.innerHTML = "..." + hypothesisDiv.innerHTML.substr(length-400, length);
-    }
+    }*/
   }
   function OnSpeechEndDetected() {
-      stopBtn.disabled = true;
+    console.log("speech done");
   }
   function UpdateRecognizedPhrase(json) {
-      hypothesisDiv.innerHTML = "";
+      /*hypothesisDiv.innerHTML = "";
       phraseDiv.innerHTML += json + "\n";
+      console.log("finished")
+      //append(json);*/
+      console.log("phrase " + json);
   }
   function OnComplete() {
-      startBtn.disabled = false;
-      stopBtn.disabled = true;
+      /*startBtn.disabled = false;
+      stopBtn.disabled = true;*/
+      console.log("finished")
   }
 
   function Setup() {
     if (recognizer != null) {
         RecognizerStop(SDK, recognizer);
     }
-    recognizer = RecognizerSetup(SDK, recognitionMode.value, languageOptions.value, SDK.SpeechResultFormat[formatOptions.value], key.value);
+    recognizer = RecognizerSetup(SDK, 'recognitionMode.value', 'en-US', SDK.SpeechResultFormat['Simple'], 
+
+      '4bcb01f1ad104b659986942a5cfe4e3c');
   }
 
 
@@ -118,13 +162,14 @@
   text = "lmao"
   var database = firebase.database();
 
-  function append(classId, text){
+  function append2(classId, text){
       newPostKey = firebase.database().ref('classes/'+classId).child('text').set(text);
+      console.log("appending " + text);
   }
 
   database.ref('/classes/1234/list').on('value', function(snapshot){
     onQuestionUpdate(snapshot);
-  })
+  });
   
   function onQuestionUpdate(snapshot){
       console.log(snapshot);
@@ -135,8 +180,27 @@
         if(post){
             post = post + ';['+slide+'~'+question + ']';
         }
+        console.log("Question asked");
         return post;
-    }); 
+    });
   }
 
-  append("1234", "lmfao");
+  function onTextUpdate(snapshot){
+    hypothesisDiv = document.getElementById("text1");
+    if(hypothesisDiv)
+      hypothesisDiv.innerHTML = snapshot.val();
+      console.log(snapshot.val())
+  }
+
+  append2("1234", "lmfao");
+  if(document.getElementById("test")){
+    Initialize(function (speechSdk) {
+        SDK = speechSdk;
+    });
+    Setup();
+    RecognizerStart(SDK, recognizer);
+  }else{
+    database.ref('classes/'+'1234').child('text').on('value', function(snapshot){
+      onTextUpdate(snapshot);
+    });
+  }
