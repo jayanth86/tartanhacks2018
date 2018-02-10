@@ -224,6 +224,13 @@
     <script type="text/javascript">
 function john(p){
     console.log(p);
+    var hello = document.getElementById("divCheckbox"+p)
+    hello.style="";
+    console.log(hi);
+};
+
+function george(p){
+    console.log(p)
 };
 
 var count = 0;
@@ -253,7 +260,13 @@ for (var i = 1; i < 4; i ++)
                             <img style="width:100%;" src = "assets/images/Inbios Presentation/` +ans+ `.jpg"></img>
                             <div style = "padding-top: 1%;"></div>
                             <a id="`+count+`" onclick = "john(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">Ask a Question Here</a>
-                            <div id="divCheckbox`+count+`" style="display: none;"> hi </div>
+                            <div id="divCheckbox`+count+`" style="display: none;">
+                                <form>
+                                  Question:<br>
+                                  <textarea style="width: 100%; height: 200px" id="msg" name="user_message"></textarea>
+                                  <a id="Submit`+count+`" onclick = "george(this.id)" class="btn hidden-sm-down btn-info">Submit</a>
+                                </form>
+                            </div>
                             </div>
 
                         </div>
