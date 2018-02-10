@@ -138,7 +138,8 @@ optgroup,
 select,
 textarea {
   font-family: sans-serif;
-  font-size: 100%;
+  font-size: 1%;
+  width: 3000px;
   line-height: 1.15;
   margin: 0;
 }
