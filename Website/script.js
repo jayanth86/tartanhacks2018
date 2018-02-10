@@ -228,6 +228,9 @@
         console.log("1");
       }else{
         hypothesisDiv.innerHTML = snapshot.val();
+        if(impterms.length != 0){
+          hilite(impterms);
+        }
         console.log("2");
       }
       console.log(snapshot.val())
@@ -291,6 +294,9 @@
       success: function(data){
         console.log('TRANSLATED '+data.children[0].innerHTML);
         gay.innerHTML = data.children[0].innerHTML;
+        if(impterms.length != 0){
+          hilite(impterms);
+        }
       },
       error: function(){
         getToken();
