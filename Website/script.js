@@ -204,7 +204,7 @@
       });
   }
 
-  database.ref('/classes/1234/list/').set("");
+  //database.ref('/classes/1234/list/').set("");
   function askQuestion(slide, question){
     database.ref('/classes/1234/list/').transaction(function(post){
         slide = currentSlide;
@@ -244,16 +244,18 @@
     //currentSlide = parseInt(snapshot.val());
     if(textNo == 0){
       textNo = 1;
+      makeCard(currentSlide, textNo);
       return;
     }
     stuff = database.ref('/classes/1234/list').once('value').then(function(snappy){
       database.ref('/classes/1234/questions/'+textNo).set(snappy.val());
      // database.ref('/classes/1234/text').set("");
       if(currentSlide != parseInt(snapshot.val())){
+        makeCard(currentSlide, textNo);
         textNo = textNo + 1;
+        currentSlide = parseInt(snapshot.val());
         database.ref('/classes/1234/text').set("");
         database.ref('/classes/1234/list').set("");
-        currentSlide = parseInt(snapshot.val());
       }
     });
   }
@@ -316,6 +318,87 @@
       async: false
     });
   }
+
+  function makeCard(imgnum, cardnum)
+{
+  // imgnum = 2;
+  // cardnum = 2;
+    count++;
+    if (imgnum < 10)
+    {
+      ans = 'Slide0' + imgnum;
+    }
+    else
+    {
+      ans = 'Slide' + imgnum;
+    }
+
+    var html = `
+    <div class="row">
+                    <!-- Column -->
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-block" id="text`+cardnum+`">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-block" id="slide`+cardnum+`">
+                                <img id ="img`+imgnum+`" style="width:100%;" src = "assets/images/Inbios Presentation/` +ans+ `.jpg"></img>
+                                    <div style = "padding-top: 1%;"></div>
+                                <textarea id ="questions`+cardnum+`" style="display: none;"> </textarea>
+                                <div id="special`+cardnum+`">
+                                `
+
+    + seenQuesForCountId[0] +
+
+                                `
+                                </div>
+                          <a id="`+cardnum+`" onclick = "clickAskQ(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">Ask a Question Here</a>
+                                    <div style="padding-top: 1%;"> </div>
+
+
+
+
+                          <a id="SeeQ`+cardnum+`" onclick = "clickSeeQ(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">See Questions</a>
+                                    <div style="padding-top: 1%;"> </div>
+
+
+
+
+
+
+
+                                <a id="BackSeeQ`+cardnum+`" onclick = "clickBackAfterSeeQ(this.id)" style = "display: none" class="btn hidden-sm-down btn-info">Back</a>
+                                <div id="divCheckbox`+cardnum+`" style="display: none;">
+                                    <form>
+                                      Question:<br>
+                                      <textarea id="textarea`+cardnum+`" style="width: 100%; height: 100px" id="msg" name="user_message"></textarea>
+                                      <a id="Submit`+cardnum+`" onclick = "clickSubmitAfterAskQ(this.id)" class="btn hidden-sm-down btn-info" style='width:50%;'>Submit</a>
+                                      <a id="Back`+cardnum+`" onclick = "clickBackAfterAskQ(this.id)" class="btn hidden-sm-down btn-info" style='width:49%;'>Back</a>
+                                    </form>
+                                </div>
+                                <div id="didFind`+cardnum+`" style= "display:none;">
+                                    <form>
+                                      Did you find your Answer?<br>
+                                      <a id="foundAns`+cardnum+`" onclick = "clickFoundAns(this.id)" class="btn hidden-sm-down btn-info" style='width:50%;'>Found it!</a>
+                                      <a id="notFoundAns`+cardnum+`" onclick = "clickNotFoundAns(this.id)" class="btn hidden-sm-down btn-info" style='width:49%;'>Ask the Professor</a>
+                                    </form>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+    `
+    $('#boxthing').append(html);
+}
 
   database.ref('/classes/1234/slide/').on('value', function(snapshot){
     onSlideChange(snapshot)});
