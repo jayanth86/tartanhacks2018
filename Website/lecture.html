@@ -222,16 +222,46 @@
     <script src="js/custom.min.js"></script>
     <script src ="./script.js"></script>
     <script type="text/javascript">
+
+// When you click on "Ask a question"
 function john(p){
     console.log(p);
-    var hello = document.getElementById("divCheckbox"+p)
-    hello.style="";
-    console.log(hi);
+    var q_text = document.getElementById("divCheckbox"+p);
+    q_text.style="";
+    var ask_q_here = document.getElementById(p);
+    ask_q_here.style="display: none; "
 };
 
+//click the back button, make question disappear, make "ask a q" reappear
+function henry(p){
+    var cou = p.substring(4); //cou for count
+    var q_text = document.getElementById("divCheckbox"+cou);
+    q_text.style="display: none;"
+    var ask_q_here = document.getElementById(cou);
+    ask_q_here.style=""
+    console.log(cou);
+
+};
+
+// when you wanna send the question to the server
 function george(p){
     console.log(p)
+    //this has Submitcount as its id, do some string parsing
+    var cou = p.substring(6);
+    var tarea = document.getElementById("textarea"+cou);
+    var data = tarea.value;
+    console.log(data);
+    tarea.value="";
+    var q_text = document.getElementById("divCheckbox"+cou);
+    q_text.style="display: none;"
+    var ask_q_here = document.getElementById(cou);
+    ask_q_here.style="display: flex; justify-content: center;"
+
+    // askquestion(cou, data);
+
 };
+
+
 
 var count = 0;
 var name = localStorage.getItem('usernameint');
@@ -263,8 +293,9 @@ for (var i = 1; i < 4; i ++)
                             <div id="divCheckbox`+count+`" style="display: none;">
                                 <form>
                                   Question:<br>
-                                  <textarea style="width: 100%; height: 200px" id="msg" name="user_message"></textarea>
-                                  <a id="Submit`+count+`" onclick = "george(this.id)" class="btn hidden-sm-down btn-info">Submit</a>
+                                  <textarea id="textarea`+count+`" style="width: 100%; height: 200px" id="msg" name="user_message"></textarea>
+                                  <a id="Submit`+count+`" onclick = "george(this.id)" class="btn hidden-sm-down btn-info" style='width:50%;'>Submit</a>
+                                  <a id="Back`+count+`" onclick = "henry(this.id)" class="btn hidden-sm-down btn-info" style='width:49%;'>Back</a>
                                 </form>
                             </div>
                             </div>
