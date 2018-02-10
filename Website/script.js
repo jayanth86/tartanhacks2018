@@ -242,21 +242,21 @@
 
   function onSlideChange(snapshot){
     //currentSlide = parseInt(snapshot.val());
+    currentSlide = parseInt(snapshot.val());
     if(textNo == 0){
       textNo = 1;
       makeCard(currentSlide, textNo);
       return;
     }
+    textNo++;
     stuff = database.ref('/classes/1234/list').once('value').then(function(snappy){
       database.ref('/classes/1234/questions/'+textNo).set(snappy.val());
      // database.ref('/classes/1234/text').set("");
-      if(currentSlide != parseInt(snapshot.val())){
-        makeCard(currentSlide, textNo);
-        textNo = textNo + 1;
-        currentSlide = parseInt(snapshot.val());
-        database.ref('/classes/1234/text').set("");
-        database.ref('/classes/1234/list').set("");
-      }
+     console.log('/classes/1234/questions/'+textNo)
+     makeCard(currentSlide, textNo);
+     currentSlide = parseInt(snapshot.val());
+     database.ref('/classes/1234/text').set("");
+     database.ref('/classes/1234/list').set("");
     });
   }
 
