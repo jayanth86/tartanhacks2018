@@ -304,8 +304,8 @@
   database.ref('/classes/1234/slide/').on('value', function(snapshot){
     onSlideChange(snapshot)});
 
-  append2("1234", "lmfao");
   if(document.getElementById("test")){
+    append2("1234", "lmfao");
     Initialize(function (speechSdk) {
         SDK = speechSdk;
     });
