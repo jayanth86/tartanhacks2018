@@ -21,6 +21,7 @@
     <link href="https://code.jboxcdn.com/0.4.9/jBox.css" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
     <script src="./node_modules/microsoft-speech-browser-sdk/distrib/speech.sdk.bundle.js"></script>
+
     <!-- <script>
   // Initialize Firebase
   var config = {
@@ -220,6 +221,7 @@
     <!--Custom JavaScript -->
     <script src="js/custom.min.js"></script>
     <script src ="./script.js"></script>
+    <script src="js/jquery.mark.min.js"></script>
     <script type="text/javascript">
 
 // When you click on "Ask a question"
@@ -285,7 +287,12 @@ function getreq(dat) {
 return keyp;
 }
 
-
+function hilite(dat)    {
+    $(".context").mark(dat);
+}
+function unlite(dat)    {
+    $(".context").unmark(dat)
+}
 
 var count = 0;
 var name = localStorage.getItem('usernameint');
@@ -372,6 +379,7 @@ $("#test").click(function(){
     `
     $('#boxthing').append(html);
 });
+
     </script>
     <!-- ============================================================== -->
     <!-- This page plugins -->
