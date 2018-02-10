@@ -4,7 +4,7 @@
   textNo = 0;
   var token = '';
 
-  var translate = "fr";
+  var translate = "en";
 
   function Initialize(onComplete){
     if(!!window.SDK){
