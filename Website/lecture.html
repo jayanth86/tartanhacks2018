@@ -102,7 +102,7 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li>
-                            <a href="classes.html" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Classes</a>
+                            <a href="index.html" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Classes</a>
                         </li>
                         <li>
                             <a href="pages-profile.html" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Profile</a>
@@ -135,9 +135,9 @@
                         <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item"><a href="classes.html">Classes</a></li>
-                            <li class="breadcrumb-item"><a href="pages-blank.html">Biotechnology 12-900</a></li>
-                            <li class="breadcrumb-item active">Lecture 10</li>
+                            <li class="breadcrumb-item"><a href="index.html">Classes</a></li>
+                            <li class="breadcrumb-item"><a href="c.html">Biotechnology 12-900</a></li>
+                            <li class="breadcrumb-item active">Lecture 11</li>
                         </ol>
                     </div>
 
@@ -210,6 +210,36 @@
     <script src="js/custom.min.js"></script>
     <script type="text/javascript">
 var count = 0;
+for (var i = 1; i < 4; i ++)
+{
+    count++;
+    ans = 'Slide0' + count;
+    var html = `
+    <div class="row">
+                    <!-- Column -->
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-block">
+                            Biotechnology is a powerful, controversial and critical topic dealing with disease, genetics, and the use of microorganisms or other biological substances to make industrial or manufacturing processes. Biotechnology has spawned many new ideas and discoveries to benefit society. It plays a part in healing the sick with antibiotics and vaccines, hybridization in plants to produce bigger and more desirable food crops, sterilization of food goods and equipment, and understanding genetics and reproduction. Although biotechnology offers humankind many great opportunities, it can also be very destructive and deadly. Since the beginning of man, many biological means have been used to fight wars. The Romans fouled their enemies water; the Tartars used bubonic plague to infect their war opponents and the British spread smallpox to the Indians in North America. These diseases are just a few of the highly toxic microorganisms involved in one of the negative sides of this complex!
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-block">
+                            <img style="width:100%;" src = "assets/images/Inbios Presentation/` +ans+ `.jpg"></img>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+    `
+    $('#boxthing').append(html);
+}
+
 $("#test").click(function(){
     count += 1;
     ans = ''
