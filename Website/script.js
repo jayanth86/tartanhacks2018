@@ -254,11 +254,7 @@
   }
 
   function changeLang(text){
-    if(text != "en"){
-      translate = text;
-    }else{
-      text = "";
-    }
+    translate = text;
   }
 
   function getToken(){
