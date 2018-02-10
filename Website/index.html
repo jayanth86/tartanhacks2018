@@ -83,7 +83,7 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav my-lg-0">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="https://www.cs.cmu.edu/~15251/img/staff-kabir.jpg" alt="user" class="profile-pic m-r-5" />Kabir Peshwaria</a>
+                            <a id='namememe' class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="https://www.cs.cmu.edu/~15251/img/staff-kabir.jpg" alt="user" class="profile-pic m-r-5" />Kabir Peshwaria</a>
                         </li>
                     </ul>
                 </div>
@@ -137,7 +137,7 @@
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                             <li class="breadcrumb-item"><a href="classes.html">Classes</a></li>
                             <li class="breadcrumb-item"><a href="pages-blank.html">Biotechnology 12-900</a></li>
-                            <li class="breadcrumb-item active">Lecture 2</li>
+                            <li class="breadcrumb-item active">Lecture 10</li>
                         </ol>
                     </div>
 
@@ -210,6 +210,8 @@
     <script src="js/custom.min.js"></script>
     <script type="text/javascript">
 var count = 0;
+var name = localStorage.get('usernameint');
+console.log(name)
 $("#test").click(function(){
     count += 1;
     ans = ''
