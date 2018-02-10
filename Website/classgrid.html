@@ -15,26 +15,10 @@
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/kabir.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="css/colors/blue.css" id="theme" rel="stylesheet">
     <link href="scss/sidebar.scss" id="theme" rel="stylesheet">
     <link href="https://code.jboxcdn.com/0.4.9/jBox.css" rel="stylesheet">
-    <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
-    <script src="./node_modules/microsoft-speech-browser-sdk/distrib/speech.sdk.bundle.js"></script>
-
-    <!-- <script>
-  // Initialize Firebase
-  var config = {
-      apiKey: "AIzaSyCnxiZJnOi4ZoRdZxorHOgZSmk-TkFGQVw",
-      authDomain: "intellect-fddd0.firebaseapp.com",
-      databaseURL: "https://intellect-fddd0.firebaseio.com",
-      projectId: "intellect-fddd0",
-      storageBucket: "https://intellect-fddd0.firebaseio.com",
-      messagingSenderId: "111240858067"
-    };
-  firebase.initializeApp(config);
-    </script>-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -69,7 +53,9 @@
                         <b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
+
                             <img src="logo1.png" height=90px alt="homepage" class="dark-logo" style="padding-top:10%;" />
+                            
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
@@ -116,13 +102,10 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li>
-                            <a href="index.html" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Classes</a>
+                            <a href="classes.html" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Classes</a>
                         </li>
                         <li>
-                            <a class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Profile</a>
-                        </li>
-                        <li>
-                            <a  class="waves-effect"><i class="fa fa-table m-r-10" aria-hidden="true"></i>Grades</a>
+                            <a href="pages-profile.html" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Profile</a>
                         </li>
                     </ul>
                 </nav>
@@ -152,12 +135,13 @@
                         <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item"><a href="index.html">Classes</a></li>
-                            <li class="breadcrumb-item"><a href="c.html">Biotechnology 12-900</a></li>
-                            <li class="breadcrumb-item active">Lecture 11</li>
+                            <li class="breadcrumb-item active"><a href="classes.html">Classes</a></li>
+                           
+
                         </ol>
                     </div>
 
+                    
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Bread crumb and right sidebar toggle -->
@@ -166,15 +150,77 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
+                <div class="row">
 
+                    <!-- Column -->
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-block">
+                                
+                                
+                                <h4 class="card-title"><a href="c.html">Biotechnology 12-900</a></h4>
+                                <div style="padding-top: 3%;"></div>
 
+                                <span class="text-muted" style="padding-top: 10%;">Lectures Watched</span>
+                                <span class="text-success">80%</span>
+                                <div style="padding-top: 3%;"></div>
+                                <div class="progress" >
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 80%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                        
+                                </div>
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-block">
+                                
+                                
+                                <h4 class="card-title"><a href="classes.html">Intro to Computer Systems 15-213</a></h4>
+                                <div style="padding-top: 3%;"></div>
+                                <span class="text-muted" style="padding-top: 10%;">Lectures Watched</span>
+                                <span class="text-danger">15%</span>
+                                <div style="padding-top: 3%;"></div>
+                                <div class="progress" >
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 15%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                        
+                                </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-block">
+                                
+                                
+                                <h4 class="card-title"><a href="classes.html">Intro to Religion 71-291</a></h4>
+                                <div style="padding-top: 3%;"></div>
+                                <span class="text-muted" style="padding-top: 10%;">Lectures Watched</span>
+                                <span class="text-warning">45%</span>
+                                <div style="padding-top: 3%;"></div>
+                                <div class="progress" >
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 30%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                        
+                                </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
 
                 <!-- Row -->
                 <!-- Row -->
                 <!-- Row -->
                 <!-- Row -->
-
+                
                     <!-- Column -->
                     <!-- Column -->
                 </div>
@@ -203,7 +249,7 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-
+    
     <script src="assets/plugins/jquery/jquery.min.js"></script>
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -224,295 +270,12 @@
     <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.min.js"></script>
-    <script src ="./script.js"></script>
-    <script src="js/jquery.mark.min.js"></script>
     <script type="text/javascript">
-
-//Putting global variables:
-var impterms = [];
-var asked_question = "";
-
-
-
-function getreq(dat) {
-   var keyp = []
-   var objret = $.ajax({
-    url: 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases',
-    headers: { 'Ocp-Apim-Subscription-Key': 'ebabcbde10a04aebbb655184a103dca9',
-     'Content-Type' :'application/json',
-     'Accept' : 'application/json' },
-     data:  `{
-        "documents": [
-            {
-                "language": "en",
-                "id": "1",
-                "text": "` + dat + `"
-            }
-        ]
-}`,
-    type: 'POST',
-    success: function(data){
-        console.log(data.documents[0].keyPhrases);
-        keyp = data.documents[0].keyPhrases;
-    },
-    async: false,
-});
-return keyp;
-}
-
-
-function hilite(dat)    {
-    $(".card").mark(dat);
-}
-function unlite(dat)    {
-    $(".card").unmark(dat)
-}
-
-// When you click on "Ask a question"
-function clickAskQ(p){
-    console.log(p);
-    var q_text = document.getElementById("divCheckbox"+p);
-    q_text.style="";
-    var ask_q_here = document.getElementById(p);
-    ask_q_here.style="display: none; "
-};
-
-
-//click the back button after "Ask a Q",
-//make question disappear, make "ask a q" reappear
-function clickBackAfterAskQ(p){
-    var cou = p.substring(4); //cou for count
-    var q_text = document.getElementById("divCheckbox"+cou);
-    q_text.style="display: none;"
-    var ask_q_here = document.getElementById(cou);
-    ask_q_here.style="display: flex; justify-content: center;"
-    console.log(cou);
-
-};
-
-// Click on submit (after asking a question)
-// when you wanna send the question to the server
-function clickSubmitAfterAskQ(p){
-    console.log(p)
-    //this has Submitcount as its id, do some string parsing
-    var cou = p.substring(6);
-    var tarea = document.getElementById("textarea"+cou);
-    var data = tarea.value;
-    console.log(data);
-    asked_question = tarea.value;
-    var q_text = document.getElementById("divCheckbox"+cou);
-    q_text.style="display: none;"
-
-    askQuestion(cou, data);
-    tarea.value = "";
-    // instead of making ask_q_here reappear
-    // var ask_q_here = document.getElementById(cou);
-    // ask_q_here.style="display: flex; justify-content: center;"
-    // console.log(asked_question)
-
-
-    // make a new div appear: Did you find your answer?
-    var findAnsDiv = document.getElementById("didFind"+cou);
-    findAnsDiv.style=""
-
-    impterms = getreq(asked_question);
-    console.log(impterms);
-    hilite(impterms);
-
-};
-
-
-// Clicking on See Questions
-function clickSeeQ(p){
-    var cou = p.substring(4);
-    // Make the slide disappear
-    var image = document.getElementById("img"+cou);
-    image.style="display:none;"
-
-    //make Ask a Question Here disappear
-    var askquestionhere = document.getElementById(cou);
-    askquestionhere.style="display:none;"
-    //make See Questions Disappear
-    var sq = document.getElementById("SeeQ"+cou);
-    sq.style="display:none;"
-    //Make Back reappear
-    var bsq = document.getElementById("BackSeeQ"+cou);
-    bsq.style = "display: flex; justify-content: center;"
-    bsq.class = "btn hidden-sm-down btn-info;"
-    //Make the questions appear
-
-    var see_q = document.getElementById("questions2"+cou);
-    see_q.style="width: 100%"
-
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            /* Toggle between adding and removing the "active" class,
-            to highlight the button that controls the panel */
-            this.classList.toggle("active");
-
-            /* Toggle between hiding and showing the active panel */
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        });
-}
-
-    // see_q.value="Here are the questions that have been asked so far:"
-    //ACCESS THE SERVER TO FIND WHAT QUESTIONS HAVE BEEN ASKED.
-
-};
-
-function clickFoundAns(p){
-    var cou = p.substring(8);
-    //instead of making ask_q_here reappear
-    var ask_q_here = document.getElementById(cou);
-    ask_q_here.style="display: flex; justify-content: center;"
-
-    // make a new div appear: Did you find your answer?
-    var findAnsDiv = document.getElementById("didFind"+cou);
-    findAnsDiv.style="display:none;"
-
-    unlite(impterms);
-    impterms = [];
-    asked_question="";
-
-};
-
-function clickNotFoundAns(p){
-    var cou = p.substring(11);
-
-    var ask_q_here = document.getElementById(cou);
-    ask_q_here.style="display: flex; justify-content: center;"
-
-    // make a new div appear: Did you find your answer?
-    var findAnsDiv = document.getElementById("didFind"+cou);
-    findAnsDiv.style="display:none;"
-
-    askQuestion(cou, asked_question);
-    unlite(impterms);
-    asked_question="";
-};
-
-// Clicking on back after See Questions
-function clickBackAfterSeeQ(p){
-    var cou = p.substring(8);
-    //make slide reappear
-    var image = document.getElementById("img"+cou);
-    image.style="width:100%;"
-
-    //make Ask a Question Here disappear
-    var askquestionhere = document.getElementById(cou);
-    askquestionhere.style="display: flex; justify-content: center;"
-    //make See Questions Disappear
-    var sq = document.getElementById("SeeQ"+cou);
-    sq.style="display: flex; justify-content: center;"
-    //Make Back reappear
-    var bsq = document.getElementById("BackSeeQ"+cou);
-    bsq.style = "display: none"
-    //Make the questions appear
-    var see_q = document.getElementById("questions2"+cou);
-    see_q.style= "display: none"
-
-    //see_q_textbox.value=""; in case you want to reset the textbox value.
-};
-
-var seenQuesForCountId = [];
-for (var i = 1; i < 4; i ++)
-{
-    //get questions (dynamically) for this count ID
-    var q_i = "hello"
-    seenQuesForCountId.push(q_i);
-}
-
 var count = 0;
 var name = localStorage.getItem('usernameint');
 console.log(name);
 $('#namememe').append(name);
-for (var i = 1; i < 4; i ++)
-{
-    count++;
-    ans = 'Slide0' + count;
-    var html = `
-    <div class="row">
-                    <!-- Column -->
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-block" id="text`+count+`">
-                            Biotechnology is a powerful, controversial and critical topic dealing with disease, genetics, and the use of microorganisms or other biological substances to make industrial or manufacturing processes. Biotechnology has spawned many new ideas and discoveries to benefit society. It plays a part in healing the sick with antibiotics and vaccines, hybridization in plants to produce bigger and more desirable food crops, sterilization of food goods and equipment, and understanding genetics and reproduction. Although biotechnology offers humankind many great opportunities, it can also be very destructive and deadly. Since the beginning of man, many biological means have been used to fight wars. The Romans fouled their enemies water; the Tartars used bubonic plague to infect their war opponents and the British spread smallpox to the Indians in North America. These diseases are just a few of the highly toxic microorganisms involved in one of the negative sides of this complex!
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-block" id="slide`+count+`">
-                                <img id ="img`+count+`" style="width:100%;" src = "assets/images/Inbios Presentation/` +ans+ `.jpg"></img>
-                                    <div style = "padding-top: 1%;"></div>
-                                <textarea id ="questions`+count+`" style="display: none;"> </textarea>
-
-
-                             <div id="questions2`+count+`" style ="display:none">
-
-                                        <button class="accordion">What is the answer to life?</button>
-                                        <div class="panel">
-                                          <p>42.</p>
-                                        </div>
-
-                             </div>
-
-
-                                <a id="`+count+`" onclick = "clickAskQ(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">Ask a Question Here</a>
-                                    <div style="padding-top: 1%;"> </div>
-
-
-
-
-                          <a id="SeeQ`+count+`" onclick = "clickSeeQ(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">See Questions</a>
-                                    <div style="padding-top: 1%;"> </div>
-
-
-
-
-
-
-
-                                <a id="BackSeeQ`+count+`" onclick = "clickBackAfterSeeQ(this.id)" style = "display: none" class="btn hidden-sm-down btn-info">Back</a>
-                                <div id="divCheckbox`+count+`" style="display: none;">
-                                    <form>
-                                      Question:<br>
-                                      <textarea id="textarea`+count+`" style="width: 100%; height: 100px" id="msg" name="user_message"></textarea>
-                                      <a id="Submit`+count+`" onclick = "clickSubmitAfterAskQ(this.id)" class="btn hidden-sm-down btn-info" style='width:50%;'>Submit</a>
-                                      <a id="Back`+count+`" onclick = "clickBackAfterAskQ(this.id)" class="btn hidden-sm-down btn-info" style='width:49%;'>Back</a>
-                                    </form>
-                                </div>
-                                <div id="didFind`+count+`" style= "display:none;">
-                                    <form>
-                                      Did you find your Answer?<br>
-                                      <a id="foundAns`+count+`" onclick = "clickFoundAns(this.id)" class="btn hidden-sm-down btn-info" style='width:50%;'>Found it!</a>
-                                      <a id="notFoundAns`+count+`" onclick = "clickNotFoundAns(this.id)" class="btn hidden-sm-down btn-info" style='width:49%;'>Ask the Professor</a>
-                                    </form>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- Column -->
-                </div>
-    `
-    $('#boxthing').append(html);
-}
-
 $("#test").click(function(){
-    RecognizerStop(SDK, recognizer);
     count += 1;
     ans = ''
     if(count >= 10)
@@ -541,8 +304,6 @@ $("#test").click(function(){
                         <div class="card">
                             <div class="card-block">
                             <img style="width:100%;" src = "assets/images/Inbios Presentation/` +ans+ `.jpg"></img>
-                            <div style = "padding-top: 1%;"></div>
-                            <a style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">Ask a Question Here</a>
                             </div>
                         </div>
                     </div>
@@ -551,7 +312,6 @@ $("#test").click(function(){
     `
     $('#boxthing').append(html);
 });
-
     </script>
     <!-- ============================================================== -->
     <!-- This page plugins -->
