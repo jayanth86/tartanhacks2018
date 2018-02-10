@@ -3,7 +3,8 @@
   currentSlide = 1;
   textNo = 0;
   var token = '';
-  translate = "fr";
+
+  var translate = "fr";
 
   function Initialize(onComplete){
     if(!!window.SDK){
@@ -191,6 +192,15 @@
         el.innerHTML = el.innerHTML + " " + arr[i] + "\n";
       }
   }
+
+  function getQuestions(idNo){
+    database.rel('/classes/1234/questions/'+idNo).once('value').then(
+      function(snappy){
+        return snappy.val().split(';');
+      });
+
+  }
+
   //database.ref('/classes/1234/list/').set("n")
   function askQuestion(slide, question){
     database.ref('/classes/1234/list/').transaction(function(post){
@@ -213,7 +223,7 @@
     hypothesisDiv = document.getElementById("text"+textNo);
     console.log("TRANSLATE IS " + translate);
     if(hypothesisDiv){
-      if(translate == ""){
+      if(translate != ""){
         translateTheShit(snapshot.val(), translate, hypothesisDiv);
         console.log("1");
       }else{
