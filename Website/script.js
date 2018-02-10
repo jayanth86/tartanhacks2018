@@ -123,8 +123,8 @@
 
   function UpdateRecognizedHypothesis(text, append) {
         hypothesisDiv = document.getElementById("text1");
-        hypothesisDiv.innerHTML += text + " ";
-        append2("1234", hypothesisDiv.innerHTML)
+        //hypothesisDiv.innerHTML += text + " ";
+        append2("1234", text)
     //var length = hypothesisDiv.innerHTML.length;
     /*if (length > 403) {
         hypothesisDiv.innerHTML = "..." + hypothesisDiv.innerHTML.substr(length-400, length);
@@ -226,11 +226,12 @@
     hypothesisDiv = document.getElementById("text"+textNo);
     console.log("TRANSLATE IS " + translate);
     if(hypothesisDiv){
+      hypothesisDiv.innerHTML = hypothesisDiv.innerHTML + snapshot.val() + " ";
       if(translate != "en"){
-        translateTheShit(snapshot.val(), "en", translate, hypothesisDiv);
+        translateTheShit(hypothesisDiv.innerHTML, "en", translate, hypothesisDiv);
         console.log("1");
       }else{
-        hypothesisDiv.innerHTML = snapshot.val();
+        //hypothesisDiv.innerHTML = snapshot.val();
         if(impterms.length != 0){
           hilite(impterms);
         }
