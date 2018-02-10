@@ -346,7 +346,8 @@
     <script src ="./script.js"></script>
         <script type="text/javascript">
 //Putting global variables:
-
+$("#test").click(function(){
+    RecognizerStop(SDK, recognizer)});
 function readChoice()
 {
     var lang = $('#lang').find(":selected").attr('name');
@@ -532,6 +533,7 @@ function clickBackAfterSeeQ(p){
     // see_q2.style="display: none;"
     //see_q_textbox.value=""; in case you want to reset the textbox value.
 };
+
 
 
 var seenQuesForCountId = [];
