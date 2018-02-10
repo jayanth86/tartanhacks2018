@@ -10,17 +10,22 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Monster Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
+    <title>InteLLect</title>
     <!-- Bootstrap Core CSS -->
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/kabir.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="css/colors/blue.css" id="theme" rel="stylesheet">
     <link href="scss/sidebar.scss" id="theme" rel="stylesheet">
     <link href="https://code.jboxcdn.com/0.4.9/jBox.css" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
     <script src="./node_modules/microsoft-speech-browser-sdk/distrib/speech.sdk.bundle.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
     <!-- <script>
   // Initialize Firebase
   var config = {
@@ -117,7 +122,10 @@
                             <a href="index.html" class="waves-effect"><i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>Classes</a>
                         </li>
                         <li>
-                            <a href="pages-profile.html" class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Profile</a>
+                            <a class="waves-effect"><i class="fa fa-user m-r-10" aria-hidden="true"></i>Profile</a>
+                        </li>
+                        <li>
+                            <a  class="waves-effect"><i class="fa fa-table m-r-10" aria-hidden="true"></i>Grades</a>
                         </li>
                     </ul>
                 </nav>
@@ -143,17 +151,87 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
 
-                    <div class="col-md-6 col-8 align-self-center">
+                    <div class="col-md-6 col-8 align-self-center" style="width: 100%;">
                         <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                             <li class="breadcrumb-item"><a href="index.html">Classes</a></li>
                             <li class="breadcrumb-item"><a href="c.html">Biotechnology 12-900</a></li>
-                            <li class="breadcrumb-item active">Lecture 11</li>
+                            <li class="breadcrumb-item"><a href="c.html">Lecture 11</a></li>
                         </ol>
+                      </div>
+                      <button id="test">pls</button>
+
+                      <div class="col-md-6 col-8 align-self-center" style="width: 100%;">
+                        <h3 class="text-themecolor m-b-0 m-t-0">Translate</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <select id ="lang" style="width: 100%;"">
+                              <option name='af'>Afrikaans</option>
+                              <option name='ar'>Arabic</option>
+                               <option name='bn'>Bangla</option>
+                              <option name='bs'>Bosnian</option>
+                               <option name='bg'>Bulgarian</option>
+                              <option name='yue'>Cantonese</option>
+                               <option name='ca'>Catalan</option>
+                              <option name='zh-Hans'>Chinese (Simplified)</option>
+                               <option name='zh-Hant'>Chinese (Tranditional)</option>
+                              <option name='hr'>Croatian</option>
+
+                              <option name='cs'>Czech</option>
+                              <option name='da'>Danish</option>
+                               <option name='nl'>Dutch</option>
+                              <option name='en'>English</option>
+                               <option name='et'>Estonian</option>
+                              <option name='fj'>Fijian</option>
+                               <option name='fil'>Filipino</option>
+                              <option name='fi'>Finnish</option>
+                               <option name='fr'>French</option>
+                              <option name='de'>German</option>
+
+                              <option name='el'>Greek</option>
+                              <option name='ht'>Hatian-Creole</option>
+                               <option name='he'>Hebrew</option>
+                              <option name='hi'>Hindi</option>
+                               <option name='hu'>Hungarian</option>
+                              <option name='id'>Indonesian</option>
+                               <option name='it'>Italian</option>
+                              <option name='je'>Japanese</option>
+                               <option name='ko'>Korean</option>
+                              <option name='lv'>Latvian</option>
+
+                              <option name='lt'>Lithuanian</option>
+                              <option name='ms'>Malay</option>
+                               <option name='mt'>Maltese</option>
+                              <option name='mb'>Norwegian</option>
+                               <option name='fa'>Persian</option>
+                              <option name='pl'>Polish</option>
+                               <option name='pt'>Portugese</option>
+                              <option name='ro'>Romanian</option>
+                               <option name='ru'>Russian</option>
+                              <option name='sm'>Samoan</option>
+
+                               <option name='sk'>Slovak</option>
+                              <option name='es'>Spanish</option>
+                               <option name='sv'>Swedish</option>
+                              <option name='ta'>Tamil</option>
+                               <option name='th'>Thai</option>
+                              <option name='tr'>Turkish</option>
+                               <option name='uk'>Ukrainian</option>
+                              <option name='u'>Urdu</option>
+                               <option name='vi'>Vietnamese</option>
+                              <option name='cy'>Welsh</option>
+
+                            </select></li>
+                            <li class="breadcrumb-item"><a href="javascript:readChoice()" = "ReadChoice()">Live Translate</a></li>
+                        </ol>
+
                     </div>
 
-                    <button id="test">pls</button>
+
+
+
+
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Bread crumb and right sidebar toggle -->
@@ -220,134 +298,278 @@
     <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.min.js"></script>
-    <script src ="./script.js"></script>
+    <script src="js/jquery.mark.min.js"></script>
     <script type="text/javascript">
 
+        var impterms = [];
+        var asked_question = "";
+        var q_array = [];
+
+
+
+        function getreq(dat,la) {
+            if(!"da,de,en,es,fi,fr,it,ja,ko,nl,no,pl,pt-BR,pt-PT,ru,sv,pt".includes(la))   {
+                return [];
+            }
+           var keyp = []
+           var objret = $.ajax({
+            url: 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases',
+            headers: { 'Ocp-Apim-Subscription-Key': 'ebabcbde10a04aebbb655184a103dca9',
+             'Content-Type' :'application/json',
+             'Accept' : 'application/json' },
+             data:  `{
+                "documents": [
+                    {
+                        "language": "` + la + `",
+                        "id": "1",
+                        "text": "` + dat + `"
+                    }
+                ]
+        }`,
+        type: 'POST',
+        success: function(data){
+            keyp = data.documents[0].keyPhrases;
+        },
+            async: false,
+        });
+        return keyp;
+        }
+
+
+        function hilite(dat)    {
+            $(".card").mark(dat);
+        }
+        function unlite(dat)    {
+            $(".card").unmark(dat)
+        }
+    </script>
+    <script src ="./script.js"></script>
+        <script type="text/javascript">
+//Putting global variables:
+
+function readChoice()
+{
+    var lang = $('#lang').find(":selected").attr('name');
+    changeLang(lang);
+}
+
+
+//Putting global variables:
+
+
 // When you click on "Ask a question"
-function john(p){
-    console.log(p);
+function clickAskQ(p){
     var q_text = document.getElementById("divCheckbox"+p);
     q_text.style="";
     var ask_q_here = document.getElementById(p);
     ask_q_here.style="display: none; "
 };
 
-//click the back button, make question disappear, make "ask a q" reappear
-function henry(p){
+
+//click the back button after "Ask a Q",
+//make question disappear, make "ask a q" reappear
+function clickBackAfterAskQ(p){
     var cou = p.substring(4); //cou for count
     var q_text = document.getElementById("divCheckbox"+cou);
     q_text.style="display: none;"
     var ask_q_here = document.getElementById(cou);
-    ask_q_here.style=""
-    console.log(cou);
-
+    ask_q_here.style="display: flex; justify-content: center;"
 };
 
+// Click on submit (after asking a question)
 // when you wanna send the question to the server
-function george(p){
-    console.log(p)
+function clickSubmitAfterAskQ(p){
     //this has Submitcount as its id, do some string parsing
     var cou = p.substring(6);
     var tarea = document.getElementById("textarea"+cou);
-    var data = tarea.value;
-    console.log(data);
-    tarea.value="";
+    data = tarea.value;
+    asked_question = tarea.value;
     var q_text = document.getElementById("divCheckbox"+cou);
     q_text.style="display: none;"
-    var ask_q_here = document.getElementById(cou);
-    ask_q_here.style="display: flex; justify-content: center;"
+    tarea.value = "";
+    // instead of making ask_q_here reappear
+    // var ask_q_here = document.getElementById(cou);
+    // ask_q_here.style="display: flex; justify-content: center;"
+    // console.log(asked_question)
 
-    // askquestion(cou, data);
 
+    // make a new div appear: Did you find your answer?
+    var findAnsDiv = document.getElementById("didFind"+cou);
+    findAnsDiv.style=""
+
+    impterms = getreq(asked_question, translate);
+    hilite(impterms);
 };
 
 
+// Clicking on See Questions
+function clickSeeQ(p){
+    var cou = p.substring(4);
+    // Make the slide disappear
+    var image = document.getElementById("img"+cou);
+    image.style="display:none;"
 
-var count = 0;
-var name = localStorage.getItem('usernameint');
-console.log(name);
-$('#namememe').append(name);
-for (var i = 1; i < 4; i ++)
-{
-    count++;
-    ans = 'Slide0' + count;
-    var html = `
-    <div class="row">
-                    <!-- Column -->
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-block" id="text`+count+`">
-                            Biotechnology is a powerful, controversial and critical topic dealing with disease, genetics, and the use of microorganisms or other biological substances to make industrial or manufacturing processes. Biotechnology has spawned many new ideas and discoveries to benefit society. It plays a part in healing the sick with antibiotics and vaccines, hybridization in plants to produce bigger and more desirable food crops, sterilization of food goods and equipment, and understanding genetics and reproduction. Although biotechnology offers humankind many great opportunities, it can also be very destructive and deadly. Since the beginning of man, many biological means have been used to fight wars. The Romans fouled their enemies water; the Tartars used bubonic plague to infect their war opponents and the British spread smallpox to the Indians in North America. These diseases are just a few of the highly toxic microorganisms involved in one of the negative sides of this complex!
+    //make Ask a Question Here disappear
+    var askquestionhere = document.getElementById(cou);
+    askquestionhere.style="display:none;"
+    //make See Questions Disappear
+    var sq = document.getElementById("SeeQ"+cou);
+    sq.style="display:none;"
+    //Make Back reappear
+    var bsq = document.getElementById("BackSeeQ"+cou);
+    bsq.style = "display: flex; justify-content: center;"
+    bsq.class = "btn hidden-sm-down btn-info;"
+    //Make the questions appear
+    //Update the questions
 
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-block" id="slide`+count+`">
-                            <img style="width:100%;" src = "assets/images/Inbios Presentation/` +ans+ `.jpg"></img>
-                            <div style = "padding-top: 1%;"></div>
-                            <a id="`+count+`" onclick = "john(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">Ask a Question Here</a>
-                            <div id="divCheckbox`+count+`" style="display: none;">
-                                <form>
-                                  Question:<br>
-                                  <textarea id="textarea`+count+`" style="width: 100%; height: 200px" id="msg" name="user_message"></textarea>
-                                  <a id="Submit`+count+`" onclick = "george(this.id)" class="btn hidden-sm-down btn-info" style='width:50%;'>Submit</a>
-                                  <a id="Back`+count+`" onclick = "henry(this.id)" class="btn hidden-sm-down btn-info" style='width:49%;'>Back</a>
-                                </form>
-                            </div>
-                            </div>
+    // var see_q = document.getElementById("questions2"+cou);
+    // see_q.style="width: 100%"
+    for (var j = 0; j < 10; j++)
+    {
+      var see_qj = document.getElementById("q"+j+"uestions2"+cou);
+      if (see_qj != null)
+      {
+        see_qj.style="width: 100%;"
+      }
+    }
 
-                        </div>
-                    </div>
-                    <!-- Column -->
-                </div>
-    `
-    $('#boxthing').append(html);
+
+    var acc = document.getElementsByClassName("accordion");
+
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            /* Toggle between adding and removing the "active" class,
+            to highlight the button that controls the panel */
+            // this.classList.toggle("active");
+
+            /* Toggle between hiding and showing the active panel */
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+
+        });
 }
 
-$("#test").click(function(){
-    RecognizerStop(SDK, recognizer);
-    count += 1;
-    ans = ''
-    if(count >= 10)
-    {
-        ans = 'Slide' + count;
-    }
-    else
-    {
-        ans = 'Slide0' + count;
-    }
-    console.log('appended');
-    var html = `
-    <div class="row">
-                    <!-- Column -->
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-block">
-                            Biotechnology is a powerful, controversial and critical topic dealing with disease, genetics, and the use of microorganisms or other biological substances to make industrial or manufacturing processes. Biotechnology has spawned many new ideas and discoveries to benefit society. It plays a part in healing the sick with antibiotics and vaccines, hybridization in plants to produce bigger and more desirable food crops, sterilization of food goods and equipment, and understanding genetics and reproduction. Although biotechnology offers humankind many great opportunities, it can also be very destructive and deadly. Since the beginning of man, many biological means have been used to fight wars. The Romans fouled their enemies water; the Tartars used bubonic plague to infect their war opponents and the British spread smallpox to the Indians in North America. These diseases are just a few of the highly toxic microorganisms involved in one of the negative sides of this complex!
+    // see_q.value="Here are the questions that have been asked so far:"
+    //ACCESS THE SERVER TO FIND WHAT QUESTIONS HAVE BEEN ASKED.
 
-                            </div>
-                        </div>
+};
+
+function clickFoundAns(p){
+    var cou = p.substring(8);
+    //instead of making ask_q_here reappear
+    var ask_q_here = document.getElementById(cou);
+    ask_q_here.style="display: flex; justify-content: center;"
+
+    // make a new div appear: Did you find your answer?
+    var findAnsDiv = document.getElementById("didFind"+cou);
+    findAnsDiv.style="display:none;"
+
+    unlite(impterms);
+    impterms = [];
+    asked_question="";
+
+};
+
+function clickNotFoundAns(p){
+    var cou = p.substring(11);
+
+    var ask_q_here = document.getElementById(cou);
+    ask_q_here.style="display: flex; justify-content: center;"
+
+    // make a new div appear: Did you find your answer?
+    var findAnsDiv = document.getElementById("didFind"+cou);
+    findAnsDiv.style="display:none;"
+
+    askQuestion(cou, asked_question);
+    unlite(impterms);
+    impterms = [];
+    asked_question="";
+};
+
+// Clicking on back after See Questions
+function clickBackAfterSeeQ(p){
+    var cou = p.substring(8);
+    //make slide reappear
+    var image = document.getElementById("img"+cou);
+    image.style="width:100%;"
+
+    //make Ask a Question Here disappear
+    var askquestionhere = document.getElementById(cou);
+    askquestionhere.style="display: flex; justify-content: center;"
+    //make See Questions Disappear
+    var sq = document.getElementById("SeeQ"+cou);
+    sq.style="display: flex; justify-content: center;"
+    //Make Back reappear
+    var bsq = document.getElementById("BackSeeQ"+cou);
+    bsq.style = "display: none"
+    //Make the questions appear
+    // var see_q = document.getElementById("questions2"+cou);
+    // see_q.style= "display: none"
+
+    // update the questions
+
+
+    for (var j = 0; j < 10; j++)
+    {
+      var see_qj = document.getElementById("q"+j+"uestions2"+cou);
+      if (see_qj != null)
+      {
+        see_qj.style="display: none;"
+      }
+    }
+
+
+    // var see_q0 = document.getElementById("q0uestions2"+cou);
+    // see_q0.style="display: none;"
+
+    // var see_q1 = document.getElementById("q1uestions2"+cou);
+    // see_q1.style="display: none;"
+    // var see_q2 = document.getElementById("q2uestions2"+cou);
+    // see_q2.style="display: none;"
+    //see_q_textbox.value=""; in case you want to reset the textbox value.
+};
+
+
+var seenQuesForCountId = [];
+for (var i = 1; i < 4; i ++)
+{
+    //get questions (dynamically) for this count ID
+    q_array = ["How are you today?", "Question by a confused stduent."] // array of questions
+    var questions_for_i = ""
+    for (var j = 0; j < q_array.length; j++)
+    {
+        var k = j+1;
+        var curr_q = q_array[j];
+        var curr_ans = "This is answer " + k;
+        var help =
+        `
+            <div id="q`+j+`uestions2`+i+`" style ="display:none">
+                <button class="accordion">` + curr_q + `</button>
+                    <div class="panel">
+                        <p>`+curr_ans+`.</p>
                     </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-block">
-                            <img style="width:100%;" src = "assets/images/Inbios Presentation/` +ans+ `.jpg"></img>
-                            <div style = "padding-top: 1%;"></div>
-                            <a style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">Ask a Question Here</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                </div>
-    `
-    $('#boxthing').append(html);
-});
+            </div>
+        `;
+        questions_for_i = questions_for_i + help;
+    }
+    seenQuesForCountId.push(questions_for_i);
+}
+
+var slideNumber = 1;
+var count = 1;
+var name = localStorage.getItem('usernameint');
+
+$('#namememe').append(name);
+count++; //count == 1
+
+
+
+
+
     </script>
     <!-- ============================================================== -->
     <!-- This page plugins -->
