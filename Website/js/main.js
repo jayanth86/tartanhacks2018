@@ -2,7 +2,7 @@
 (function ($) {
     function redirect(name)
     {
-        localStorage.setItem("usernameint",name.val());  
+        localStorage.setItem("usernameint",$(name).val().trim());  
         var url = "https://jayanth86.github.io/tartanhacks2018/Website/index.html";
         $(location).attr('href',url);
         return false;
