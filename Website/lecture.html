@@ -547,7 +547,7 @@ var seenQuesForCountId = [];
 for (var i = 1; i < 4; i ++)
 {
     //get questions (dynamically) for this count ID
-    var q_array = ["Why is Abel a God?","Why is life hard", "How many licks", "Why KS is cool"] //onQuestionUpdate() // array of questions
+    var q_array = QuestionUpdate(i) // array of questions
     var questions_for_i = ""
     for (var j = 0; j < q_array.length; j++)
     {
@@ -576,7 +576,15 @@ $('#namememe').append(name);
 for (var i = 1; i < 4; i ++)
 {
     count++;
-    ans = 'Slide0' + count;
+    if (count < 10)
+    {
+      ans = 'Slide0' + count;
+    }
+    else
+    {
+      ans = 'Slide' + count;
+    }
+
     var html = `
     <div class="row">
                     <!-- Column -->
@@ -646,7 +654,7 @@ for (var i = 1; i < 4; i ++)
 $("#test").click(function(){
     RecognizerStop(SDK, recognizer);
     count += 1;
-    ans = ''
+    var ans = ''
     if(count >= 10)
     {
         ans = 'Slide' + count;
