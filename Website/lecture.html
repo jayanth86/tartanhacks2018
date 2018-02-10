@@ -302,6 +302,7 @@
 
         var impterms = [];
         var asked_question = "";
+        var q_array = [];
 
 
 
@@ -412,6 +413,7 @@ function clickSubmitAfterAskQ(p){
 
 // Clicking on See Questions
 function clickSeeQ(p){
+    console.log("Is this run?")
     var cou = p.substring(4);
     // Make the slide disappear
     var image = document.getElementById("img"+cou);
@@ -428,10 +430,33 @@ function clickSeeQ(p){
     bsq.style = "display: flex; justify-content: center;"
     bsq.class = "btn hidden-sm-down btn-info;"
     //Make the questions appear
+    //Update the questions
 
     // var see_q = document.getElementById("questions2"+cou);
     // see_q.style="width: 100%"
-
+    var important = document.getElementById("special"+cou);
+    askQuestion(1, q_array); // array of questions
+    console.log("Please print the question now:")
+    console.log(q_array[0]);
+    var questions_for_cou = ""
+    for (var j = 0; j < q_array.length; j++)
+    {
+        var k = j+1;
+        var curr_q = q_array[j];
+        var curr_ans = "This is answer " + k;
+        var help =
+        `
+            <div id="q`+j+`uestions2`+cou+`" style ="display:none">
+                <button class="accordion">` + curr_q + `</button>
+                    <div class="panel">
+                        <p>`+curr_ans+`.</p>
+                    </div>
+            </div>
+        `;
+        questions_for_cou = questions_for_cou + help;
+    }
+    console.log(questions_for_cou);
+    important.innerHTML = questions_for_cou;
     for (var j = 0; j < 10; j++)
     {
       var see_qj = document.getElementById("q"+j+"uestions2"+cou);
@@ -440,14 +465,7 @@ function clickSeeQ(p){
         see_qj.style="width: 100%;"
       }
     }
-    // var see_q0 = document.getElementById("q0uestions2"+cou);
-    // see_q0.style="width: 100%"
 
-    // var see_q1 = document.getElementById("q1uestions2"+cou);
-    // see_q1.style="width: 100%"
-
-    // var see_q2 = document.getElementById("q2uestions2"+cou);
-    // see_q2.style="width: 100%"
 
     var acc = document.getElementsByClassName("accordion");
 
@@ -525,6 +543,8 @@ function clickBackAfterSeeQ(p){
     // var see_q = document.getElementById("questions2"+cou);
     // see_q.style= "display: none"
 
+    // update the questions
+
 
     for (var j = 0; j < 10; j++)
     {
@@ -546,11 +566,12 @@ function clickBackAfterSeeQ(p){
     //see_q_textbox.value=""; in case you want to reset the textbox value.
 };
 
+
 var seenQuesForCountId = [];
 for (var i = 1; i < 4; i ++)
 {
     //get questions (dynamically) for this count ID
-    var q_array = QuestionUpdate(i) // array of questions
+    askQuestion(i, q_array); // array of questions
     var questions_for_i = ""
     for (var j = 0; j < q_array.length; j++)
     {
@@ -607,11 +628,13 @@ for (var i = 1; i < 4; i ++)
                                 <img id ="img`+count+`" style="width:100%;" src = "assets/images/Inbios Presentation/` +ans+ `.jpg"></img>
                                     <div style = "padding-top: 1%;"></div>
                                 <textarea id ="questions`+count+`" style="display: none;"> </textarea>
+                                <div id="special`+count+`">
                                 `
 
 + seenQuesForCountId[count-1] +
 
                                 `
+                                </div>
                           <a id="`+count+`" onclick = "clickAskQ(this.id)" style = "display: flex; justify-content: center;" class="btn hidden-sm-down btn-info">Ask a Question Here</a>
                                     <div style="padding-top: 1%;"> </div>
 
