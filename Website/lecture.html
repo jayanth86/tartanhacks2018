@@ -293,11 +293,14 @@ function clickSubmitAfterAskQ(p){
     //this has Submitcount as its id, do some string parsing
     var cou = p.substring(6);
     var tarea = document.getElementById("textarea"+cou);
+    var data = tarea.value;
+    console.log(data);
     asked_question = tarea.value;
-    tarea.value="";
     var q_text = document.getElementById("divCheckbox"+cou);
     q_text.style="display: none;"
 
+    askQuestion(cou, data);
+    tarea.value = "";
     // instead of making ask_q_here reappear
     // var ask_q_here = document.getElementById(cou);
     // ask_q_here.style="display: flex; justify-content: center;"
@@ -335,7 +338,7 @@ function clickSeeQ(p){
     //Make the questions appear
     var see_q_textbox = document.getElementById("questions"+cou);
     see_q_textbox.style="width:100%"
-    see_q_textbox.value="Here are the questions that have been asked so far:"
+    //see_q_textbox.value="Here are the questions that have been asked so far:"
     //ACCESS THE SERVER TO FIND WHAT QUESTIONS HAVE BEEN ASKED.
 
 };
