@@ -231,6 +231,31 @@ function john(p){
 function george(p){
     console.log(p)
 };
+function getreq(dat) {
+   var keyp = []
+   var objret = $.ajax({
+    url: 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases',
+    headers: { 'Ocp-Apim-Subscription-Key': 'ebabcbde10a04aebbb655184a103dca9',
+     'Content-Type' :'application/json',
+     'Accept' : 'application/json' },
+     data:  `{
+        "documents": [
+            {
+                "language": "en",
+                "id": "1",
+                "text": "` + dat + `"
+            }
+        ]
+}`,
+    type: 'POST',
+    success: function(data){
+        console.log(data.documents[0].keyPhrases);
+        keyp = data.documents[0].keyPhrases;
+    },
+    async: false,
+});
+return keyp;
+}
 
 var count = 0;
 var name = localStorage.getItem('usernameint');
