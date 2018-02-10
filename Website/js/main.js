@@ -2,7 +2,7 @@
 (function ($) {
     function redirect(name)
     {
-        localStorage.setItem("usernameint",$(name).val().trim());  
+        localStorage.setItem("usernameint",name);  
         var url = "https://jayanth86.github.io/tartanhacks2018/Website/index.html";
         $(location).attr('href',url);
         return false;
@@ -29,10 +29,9 @@
                 check=false;
             }
             if(i == 1)  {
-                name = input[i];
+                name = ($(input[i]).val());
             }
         }
-
         if(check)   {
             redirect(name);
         }
