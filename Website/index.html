@@ -210,8 +210,9 @@
     <script src="js/custom.min.js"></script>
     <script type="text/javascript">
 var count = 0;
-var name = localStorage.get('usernameint');
-console.log(name)
+var name = localStorage.getItem('usernameint');
+console.log(name);
+
 $("#test").click(function(){
     count += 1;
     ans = ''
