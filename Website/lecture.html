@@ -306,6 +306,9 @@
 
 
         function getreq(dat,la) {
+            if(!"da,de,en,es,fi,fr,it,ja,ko,nl,no,pl,pt-BR,pt-PT,ru,sv".includes(la))   {
+                return [];
+            }
            var keyp = []
            var objret = $.ajax({
             url: 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases',
