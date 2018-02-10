@@ -413,7 +413,6 @@ function clickSubmitAfterAskQ(p){
 
 // Clicking on See Questions
 function clickSeeQ(p){
-    console.log("Is this run?")
     var cou = p.substring(4);
     // Make the slide disappear
     var image = document.getElementById("img"+cou);
@@ -434,29 +433,6 @@ function clickSeeQ(p){
 
     // var see_q = document.getElementById("questions2"+cou);
     // see_q.style="width: 100%"
-    var important = document.getElementById("special"+cou);
-    askQuestion(1, q_array); // array of questions
-    console.log("Please print the question now:")
-    console.log(q_array[0]);
-    var questions_for_cou = ""
-    for (var j = 0; j < q_array.length; j++)
-    {
-        var k = j+1;
-        var curr_q = q_array[j];
-        var curr_ans = "This is answer " + k;
-        var help =
-        `
-            <div id="q`+j+`uestions2`+cou+`" style ="display:none">
-                <button class="accordion">` + curr_q + `</button>
-                    <div class="panel">
-                        <p>`+curr_ans+`.</p>
-                    </div>
-            </div>
-        `;
-        questions_for_cou = questions_for_cou + help;
-    }
-    console.log(questions_for_cou);
-    important.innerHTML = questions_for_cou;
     for (var j = 0; j < 10; j++)
     {
       var see_qj = document.getElementById("q"+j+"uestions2"+cou);
@@ -571,7 +547,7 @@ var seenQuesForCountId = [];
 for (var i = 1; i < 4; i ++)
 {
     //get questions (dynamically) for this count ID
-    askQuestion(i, q_array); // array of questions
+    q_array = ["How are you today?", "Question by a confused stduent."] // array of questions
     var questions_for_i = ""
     for (var j = 0; j < q_array.length; j++)
     {
