@@ -1,5 +1,8 @@
 
   recognizer = null;
+  currentSlide = 0;
+  textNo = 0;
+
   function Initialize(onComplete){
     if(!!window.SDK){
         console.log("error");
@@ -173,23 +176,34 @@
   function onQuestionUpdate(snapshot){
       console.log(snapshot);
   }
-  
+  database.ref('/classes/1234/list/').set("n")
   function askQuestion(slide, question){
     database.ref('/classes/1234/list/').transaction(function(post){
+        slide = currentSlide;
         if(post){
+            console.log("lmao")
             post = post + ';['+slide+'~'+question + ']';
         }
         console.log("Question asked");
+        console.log(post);
         return post;
     });
   }
 
   function onTextUpdate(snapshot){
-    hypothesisDiv = document.getElementById("text1");
+    hypothesisDiv = document.getElementById("text"+textNo);
     if(hypothesisDiv)
       hypothesisDiv.innerHTML = snapshot.val();
       console.log(snapshot.val())
   }
+
+  function onSlideChange(snapshot){
+    currentSlide = parseInt(snapshot.val());
+    textNo = textNo + 1;
+  }
+
+  database.ref('/classes/1234/slide/').on('value', function(snapshot){
+    onSlideChange(snapshot)});
 
   append2("1234", "lmfao");
   if(document.getElementById("test")){
