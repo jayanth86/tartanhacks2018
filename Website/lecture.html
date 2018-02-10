@@ -164,7 +164,7 @@
                       <div class="col-md-6 col-8 align-self-center" style="width: 100%;">
                         <h3 class="text-themecolor m-b-0 m-t-0">Translate</h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"> 
+                            <li class="breadcrumb-item">
                                 <select id ="lang" style="width: 100%;"">
                               <option name='af'>Afrikaans</option>
                               <option name='ar'>Arabic</option>
@@ -224,12 +224,12 @@
                             </select></li>
                             <li class="breadcrumb-item"><a href="javascript:readChoice()" = "ReadChoice()">Live Translate</a></li>
                         </ol>
-                       
+
                     </div>
 
-                
 
-                    
+
+
 
                 </div>
                 <!-- ============================================================== -->
@@ -302,9 +302,9 @@
 
         var impterms = [];
         var asked_question = "";
-        
-        
-        
+
+
+
         function getreq(dat,la) {
            var keyp = []
            var objret = $.ajax({
@@ -330,8 +330,8 @@
         });
         return keyp;
         }
-    
-    
+
+
         function hilite(dat)    {
             $(".card").mark(dat);
         }
@@ -430,14 +430,22 @@ function clickSeeQ(p){
     // var see_q = document.getElementById("questions2"+cou);
     // see_q.style="width: 100%"
 
-    var see_q0 = document.getElementById("q0uestions2"+cou);
-    see_q0.style="width: 100%"
+    for (var j = 0; j < 10; j++)
+    {
+      var see_qj = document.getElementById("q"+j+"uestions2"+cou);
+      if (see_qj != null)
+      {
+        see_qj.style="width: 100%;"
+      }
+    }
+    // var see_q0 = document.getElementById("q0uestions2"+cou);
+    // see_q0.style="width: 100%"
 
-    var see_q1 = document.getElementById("q1uestions2"+cou);
-    see_q1.style="width: 100%"
+    // var see_q1 = document.getElementById("q1uestions2"+cou);
+    // see_q1.style="width: 100%"
 
-    var see_q2 = document.getElementById("q2uestions2"+cou);
-    see_q2.style="width: 100%"
+    // var see_q2 = document.getElementById("q2uestions2"+cou);
+    // see_q2.style="width: 100%"
 
     var acc = document.getElementsByClassName("accordion");
 
@@ -515,13 +523,24 @@ function clickBackAfterSeeQ(p){
     // var see_q = document.getElementById("questions2"+cou);
     // see_q.style= "display: none"
 
-    var see_q0 = document.getElementById("q0uestions2"+cou);
-    see_q0.style="display: none;"
 
-    var see_q1 = document.getElementById("q1uestions2"+cou);
-    see_q1.style="display: none;"
-    var see_q2 = document.getElementById("q2uestions2"+cou);
-    see_q2.style="display: none;"
+    for (var j = 0; j < 10; j++)
+    {
+      var see_qj = document.getElementById("q"+j+"uestions2"+cou);
+      if (see_qj != null)
+      {
+        see_qj.style="display: none;"
+      }
+    }
+
+
+    // var see_q0 = document.getElementById("q0uestions2"+cou);
+    // see_q0.style="display: none;"
+
+    // var see_q1 = document.getElementById("q1uestions2"+cou);
+    // see_q1.style="display: none;"
+    // var see_q2 = document.getElementById("q2uestions2"+cou);
+    // see_q2.style="display: none;"
     //see_q_textbox.value=""; in case you want to reset the textbox value.
 };
 
@@ -529,7 +548,7 @@ var seenQuesForCountId = [];
 for (var i = 1; i < 4; i ++)
 {
     //get questions (dynamically) for this count ID
-    var q_array = ["Why is life hard", "How many licks", "Why KS is cool"] //onQuestionUpdate() // array of questions
+    var q_array = ["Why is Abel a God?","Why is life hard", "How many licks", "Why KS is cool"] //onQuestionUpdate() // array of questions
     var questions_for_i = ""
     for (var j = 0; j < q_array.length; j++)
     {
